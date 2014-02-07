@@ -7,18 +7,18 @@ Modified by Marco d'Itri <md@Linux.IT>
 
 --- a/configure	2010-04-02 19:56:49.000000000 +1100
 +++ b/configure	2010-04-05 10:06:48.000000000 +1000
-@@ -24372,13 +24372,14 @@ ac_res=$ac_cv_search_pcre_compile
+@@ -27067,13 +27067,14 @@
  if test "$ac_res" != no; then :
    test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
    test "$ac_cv_search_pcre_compile" = "none required" ||
--	 LIB_PCRE=$ac_cv_search_pcre_compile
+-         LIB_PCRE=$ac_cv_search_pcre_compile
 +	 LIB="-ldl $LIBS"
  fi
  
        for ac_func in pcre_compile
  do :
    ac_fn_c_check_func "$LINENO" "pcre_compile" "ac_cv_func_pcre_compile"
- if test "x$ac_cv_func_pcre_compile" = x""yes; then :
+ if test "x$ac_cv_func_pcre_compile" = xyes; then :
 +  CPPFLAGS="$CPPFLAGS -DHAVE_DYNAMIC_LIBPCRE"
    cat >>confdefs.h <<_ACEOF
  #define HAVE_PCRE_COMPILE 1

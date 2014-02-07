@@ -1,6 +1,6 @@
 /* mbsupport.h --- Localize determination of whether we have multibyte stuff.
 
-   Copyright (C) 2004-2005, 2007, 2009-2010 Free Software Foundation, Inc.
+   Copyright (C) 2004-2005, 2007, 2009-2012 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,21 +17,13 @@
    Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA
    02110-1301, USA.  */
 
-
-/* This file is needed so that we test for i18n support in just one place.
-   This gives us a consistent definition for all uses of MBS_SUPPORT. This
-   follows the ``Don't Repeat Yourself'' principle from "The Pragmatic
-   Programmer".
-
-   The tests should be *all* the ones that are needed for an individual
-   application.  */
-
-#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
+
+#ifndef MBS_SUPPORT
+# define MBS_SUPPORT 1
 #endif
 
-#if defined(HAVE_WCSCOLL) && defined(HAVE_ISWCTYPE)
-# define MBS_SUPPORT 1
-#else
-# undef MBS_SUPPORT
+#if ! MBS_SUPPORT
+# undef MB_CUR_MAX
+# define MB_CUR_MAX 1
 #endif

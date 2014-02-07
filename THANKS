@@ -1,4 +1,4 @@
-  Copyright (C) 1992, 1997-2002, 2004-2010 Free Software Foundation, Inc.
+  Copyright (C) 1992, 1997-2002, 2004-2012 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -17,6 +17,7 @@ Bob Proulx                 <rwp@hprwp.fc.hp.com>
 Brian Youmans              <3diff@gnu.org>
 Bruno Haible               <haible@ilog.fr>
 Christian Groessler        <cpg@aladdin.de>
+Corinna Vinschen           <vinschen@redhat.com>
 Dagobert Michelsen         <dam@opencsw.org>
 David Clissold             <cliss@austin.ibm.com>
 David J MacKenzie          <djm@catapult.va.pubnix.com>
@@ -25,6 +26,7 @@ Dmitry V. Levin            <ldv@altlinux.org>
 Egmont Koblinger           <egmont@gmail.com>
 Eli Zaretskii              <eliz@is.elta.co.il>
 Eric Blake                 <eblake@redhat.com>
+Fernando Basso             <fernandobasso.br@gmail.com>
 Florian La Roche           <laroche@redhat.com>
 Franc,ois Pinard           <pinard@IRO.UMontreal.CA>
 Gerald Stoller             <gerald_stoller@hotmail.com>
@@ -35,6 +37,8 @@ H. Merijn Brand            <h.m.brand@hccnet.nl>
 Harald Hanche-Olsen        <hanche@math.ntnu.no>
 Hans-Bernhard Broeker      <broeker@physik.rwth-aachen.de>
 Heikki Korpela             <heko@iki.fi>
+Igor O. Ladygin            <assa@zabtrans.ru>
+Ilya Basin                 <basinilya@gmail.com>
 Isamu Hasegawa             <isamu@yamato.ibm.com>
 Jaroslav Škarvada          <jskarvad@redhat.com>
 Jeff Bailey                <jbailey@nisa.net>
@@ -71,8 +75,10 @@ Philipp Kohlbecher         <xt28@gmx.de>
 Philippe Defert            <Philippe.Defert@cern.ch>
 Philippe De Muyter         <phdm@info.ucl.ac.be>
 Philip Hazel               <ph10@cus.cam.ac.uk>
+Rainer Orth                <ro@cebitec.uni-bielefeld.de>
 Roland Roberts             <rroberts@muller.com>
 Ruslan Ermilov             <ru@freebsd.org>
+Santiago Ruano Rincón      <santiago@debian.org>
 Santiago Vila              <sanvila@unex.es>
 Shannon Hill               <hill@synnet.com>
 Sotiris Vassilopoulos      <Sotiris.Vassilopoulos@betatech.gr>

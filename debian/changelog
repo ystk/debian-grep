@@ -1,3 +1,120 @@
+grep (2.12-2) unstable; urgency=low
+
+  * Updated debian/watch to match .tar.xz files 
+  * Added 90-672240-exclude.patch so that --exclude excludes again 
+    (Closes: #672240)
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Sun, 13 May 2012 14:08:01 +0200
+
+grep (2.12-1) unstable; urgency=low
+
+  * New upstream version 2.12
+    Merged upstream:
+      82-669084-stdin-exemption.patch
+      81-668585-excluded_file_name.patch
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 08 May 2012 11:41:50 +1000
+
+grep (2.11-3) unstable; urgency=low
+
+  * --devices=ACTION (-D) no longer affects stdin 
+    Add 82-669084-stdin-exemption.patch
+    Closes: #669084
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 17 Apr 2012 22:49:08 +1000
+
+grep (2.11-2) unstable; urgency=low
+
+  * Don't segfault with -r --exclude-dir and no file operand
+    Add 81-668585-excluded_file_name.patch
+    Patch by Allan McRae
+    Closes: #668585
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Fri, 13 Apr 2012 18:29:01 +1000
+
+grep (2.11-1) unstable; urgency=low
+
+  * New upstream version 2.11
+    Closes: #668534
+    Fix "input file == output file detection and -q"
+    Closes: #651617
+  * Enable hardened build flags
+    Patch by Moritz Muehlenhoff
+    Closes: #655502
+  * Drop 55-185208-bigfile.patch as it doesn't work
+  * Standards Version is 3.9.3
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Fri, 13 Apr 2012 09:20:46 +1000
+
+grep (2.10-1) unstable; urgency=low
+
+  * New upstream version 2.10
+  * Fix unneeded-build-dep-on-quilt
+  * Fix debian-rules-missing-recommended-target
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sun, 04 Dec 2011 21:17:33 +1100
+
+grep (2.9-2) unstable; urgency=low
+
+  * Removed 60-76011-main.c.patch introduced in the last revision. It
+    introduces a bug and needs further discusion. See:
+    https://savannah.gnu.org/patch/?7577
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Thu, 18 Aug 2011 00:31:57 +0200
+
+grep (2.9-1) unstable; urgency=low
+
+  * 60-76011-main.c.patch: `grep -lc' does not show files with no occurrences. 
+    Thanks to Peter Samuelson. (Closes: #76011)
+  * New upstream release.
+    - Fixes locales and brackets-related bug (Closes: #624387)
+  * Updating 80-587930-man-ere-reference.patch to add changes in info page
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Wed, 13 Jul 2011 20:02:15 -0400
+
+grep (2.8-2) unstable; urgency=low
+
+  * Applying patch to improve reference acronyms in man page. Thanks to 
+    Chris Butler. (Closes: #587930)
+  * Bump Standars-Version to 3.9.2. No changes needed
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Tue, 31 May 2011 19:05:48 +0200
+
+grep (2.8-1) experimental; urgency=low
+
+  * New upstream version: 2.8
+  * Removing, since not longer needed:
+    - 80-495993-catalan_translation.patch
+    - 90-dfasearch-hurd.patch
+  * Really applying 55-185208-bigfile.patch
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Sun, 29 May 2011 11:04:28 +0200
+
+grep (2.7-2) experimental; urgency=low
+
+  * Adding 90-dfasearch-hurd.patch to avoid error 
+    when compiling on hurd.
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Tue, 19 Apr 2011 21:17:27 +0200
+
+grep (2.7-1) experimental; urgency=low
+
+  * New upstream version, 2.7
+    - Updated patches: 
+      03-397262-dlopen-pcre.patch
+      55-185208-bigfile.patch
+      80-495993-catalan_translation.patch
+    - Not longer needed, now included in upstream: 
+      05-kwset.c.patch
+      06-578709-ignore-MMAP_OPTION.patch
+  * Merging with Ubuntu:
+    - Don't pass -ldl in CFLAGS, but in LIBS instead. (Closes: #596266)
+    - Verbose build by default.
+  * Bump Standars-Version to 3.9.1, no changes needed
+  * Vcs-Git and Vcs-Browser fileds included again
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Mon, 18 Apr 2011 18:23:03 +0200
+
 grep (2.6.3-3) unstable; urgency=high
 
   * Ignore MMAP_OPTION

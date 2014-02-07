@@ -1,5 +1,5 @@
 /* searchutils.c - helper subroutines for grep's matchers.
-   Copyright 1992, 1998, 2000, 2007, 2009-2010 Free Software Foundation, Inc.
+   Copyright 1992, 1998, 2000, 2007, 2009-2012 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
    02110-1301, USA.  */
 
 #include <config.h>
+#include <assert.h>
 #include "search.h"
 
 #define NCHAR (UCHAR_MAX + 1)
@@ -27,14 +28,10 @@ kwsinit (kwset_t *kwset)
   static char trans[NCHAR];
   int i;
 
-  if (match_icase
-#ifdef MBS_SUPPORT
-      && MB_CUR_MAX == 1
-#endif
-     )
+  if (match_icase && MB_CUR_MAX == 1)
     {
       for (i = 0; i < NCHAR; ++i)
-        trans[i] = TOLOWER (i);
+        trans[i] = tolower (i);
 
       *kwset = kwsalloc (trans);
     }
@@ -45,12 +42,13 @@ kwsinit (kwset_t *kwset)
     xalloc_die ();
 }
 
-#ifdef MBS_SUPPORT
+#if MBS_SUPPORT
 /* Convert the *N-byte string, BEG, to lowercase, and write the
    NUL-terminated result into malloc'd storage.  Upon success, set *N
    to the length (in bytes) of the resulting string (not including the
    trailing NUL byte), and return a pointer to the lowercase string.
    Upon memory allocation failure, this function exits.
+   Note that on input, *N must be larger than zero.
 
    Note that while this function returns a pointer to malloc'd storage,
    the caller must not free it, since this function retains a pointer
@@ -66,11 +64,16 @@ mbtolower (const char *beg, size_t *n)
   const char *end;
   char *p;
 
-  if (*n > outalloc)
+  if (*n > outalloc || outalloc == 0)
     {
-      out = xrealloc (out, *n);
-      outalloc = *n;
+      outalloc = MAX(1, *n);
+      out = xrealloc (out, outalloc);
     }
+
+  /* appease clang-2.6 */
+  assert (out);
+  if (*n == 0)
+    return out;
 
   memset (&is, 0, sizeof (is));
   memset (&os, 0, sizeof (os));
@@ -108,14 +111,14 @@ mbtolower (const char *beg, size_t *n)
     }
 
   *n = p - out;
-  *p++ = 0;
+  *p = 0;
   return out;
 }
 
 
 bool
 is_mb_middle (const char **good, const char *buf, const char *end,
-	      size_t match_len)
+              size_t match_len)
 {
   const char *p = *good;
   const char *prev = p;
@@ -132,12 +135,12 @@ is_mb_middle (const char **good, const char *buf, const char *end,
         prev = p;
 
       if (mbclen == (size_t) -1 || mbclen == (size_t) -2 || mbclen == 0)
-	{
-	  /* An invalid sequence, or a truncated multibyte character.
-	     We treat it as a single byte character.  */
-	  mbclen = 1;
-	  memset(&cur_state, 0, sizeof cur_state);
-	}
+        {
+          /* An invalid sequence, or a truncated multibyte character.
+             We treat it as a single byte character.  */
+          mbclen = 1;
+          memset(&cur_state, 0, sizeof cur_state);
+        }
       p += mbclen;
     }
 

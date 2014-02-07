@@ -1,7 +1,7 @@
 #! /bin/sh
 # Test various combinations of command-line options.
 #
-# Copyright (C) 2001, 2006, 2009-2010 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2006, 2009-2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -9,8 +9,7 @@
 #
 # This set of tests was started by Julian Foad.
 
-: ${srcdir=.}
-. "$srcdir/init.sh"; path_prepend_ ../src
+. "${srcdir=.}/init.sh"; path_prepend_ ../src
 
 failures=0
 

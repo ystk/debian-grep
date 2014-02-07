@@ -1,7 +1,7 @@
 # pcre.m4 - check for libpcre support
 # serial 1
 
-# Copyright (C) 2010 Free Software Foundation, Inc.
+# Copyright (C) 2010-2012 Free Software Foundation, Inc.
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -28,12 +28,12 @@ AC_DEFUN([gl_FUNC_PCRE],
         || test $ac_cv_header_pcre_pcre_h = yes; then
       pcre_saved_LIBS=$LIBS
       AC_SEARCH_LIBS([pcre_compile], [pcre],
-	[test "$ac_cv_search_pcre_compile" = "none required" ||
-	 LIB_PCRE=$ac_cv_search_pcre_compile])
+        [test "$ac_cv_search_pcre_compile" = "none required" ||
+         LIB_PCRE=$ac_cv_search_pcre_compile])
       AC_CHECK_FUNCS([pcre_compile])
       LIBS=$pcre_saved_LIBS
       if test $ac_cv_func_pcre_compile = yes; then
-	use_pcre=yes
+        use_pcre=yes
       fi
     fi
     if test $use_pcre = no; then

@@ -1,7 +1,7 @@
 dnl
 dnl autoconf input file for ``GNU grep''
 dnl
-dnl Copyright (C) 1997-2006, 2009-2010 Free Software Foundation, Inc.
+dnl Copyright (C) 1997-2006, 2009-2012 Free Software Foundation, Inc.
 dnl
 dnl This file is part of GNU grep.
 dnl
@@ -22,13 +22,53 @@ AC_INIT([GNU grep],
         m4_esyscmd([build-aux/git-version-gen .tarball-version]),
         [bug-grep@gnu.org])
 
+# Set the GREP and EGREP variables to a dummy replacement for the 'grep'
+# command, so that AC_PROG_GREP and AC_PROG_EGREP don't fail when no good
+# 'grep' program is found. This makes it possible to build GNU grep on a
+# Solaris machine that has only /usr/bin/grep and no /usr/xpg4/bin/grep.
+# This function supports only restricted arguments:
+#   - No file names as arguments, process only standard input.
+#   - Only literal strings without backslashes, no regular expressions.
+#   - The only options are -e and -E (and -Ee).
+# This function also does not support long lines beyond what the shell
+# supports), and backslash-processes the input.
+fn_grep () {
+  test "$1" = -E && shift
+  case $@%:@:$1 in
+    0:*) AC_MSG_ERROR([fn_grep: expected pattern]) ;;
+    1:-*) AC_MSG_ERROR([fn_grep: invalid command line]) ;;
+    1:*) pattern=$1 ;;
+    2:--|2:-e|2:-Ee) pattern=$2 ;;
+    *) AC_MSG_ERROR([fn_grep: invalid command line]) ;;
+  esac
+
+  case $pattern in
+    [*[].^$\\*[]*]) dnl The outer brackets are for M4.
+      AC_MSG_ERROR([fn_grep: regular expressions not supported])  ;;
+  esac
+
+  rc=1
+  while read line; do
+    case $line in
+      *$pattern*)
+        rc=0
+        AS_ECHO([$line]) ;;
+    esac
+  done
+  return $rc
+}
+
+test -n "$GREP" || GREP=fn_grep
+test -n "$EGREP" || EGREP=fn_grep
+ac_cv_path_EGREP=$EGREP
+
 AC_CONFIG_AUX_DIR(build-aux)
 AC_CONFIG_SRCDIR(src/grep.c)
 AC_DEFINE([GREP], 1, [We are building grep])
 AC_PREREQ(2.59)
 
 dnl Automake stuff.
-AM_INIT_AUTOMAKE([1.11 dist-xz color-tests parallel-tests])
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz color-tests parallel-tests])
 AM_SILENT_RULES([yes]) # make --enable-silent-rules the default.
 
 AC_CONFIG_HEADERS([config.h:config.hin])
@@ -42,7 +82,6 @@ gl_EARLY
 AC_PROG_RANLIB
 
 dnl Checks for typedefs, structures, and compiler characteristics.
-AC_SYS_LARGEFILE
 AC_TYPE_SIZE_T
 AC_C_CONST
 gl_INIT
@@ -124,9 +163,18 @@ if test "$gl_gcc_warnings" = yes; then
   nw="$nw -Wunused-macros"
   #nw="$nw -Wmissing-prototypes"
   nw="$nw -Wold-style-definition"
+  nw="$nw -Wcast-align"
+  nw="$nw -Wunsuffixed-float-constants"
+  gl_WARN_ADD([-Wno-format-nonliteral])
   gl_MANYWARN_COMPLEMENT([GNULIB_WARN_CFLAGS], [$WARN_CFLAGS], [$nw])
   AC_SUBST([GNULIB_WARN_CFLAGS])
 fi
+
+# By default, argmatch should fail calling usage (EXIT_FAILURE).
+AC_DEFINE([ARGMATCH_DIE], [usage (EXIT_FAILURE)],
+          [Define to the function xargmatch calls on failures.])
+AC_DEFINE([ARGMATCH_DIE_DECL], [void usage (int _e)],
+          [Define to the declaration of the xargmatch failure function.])
 
 dnl Checks for header files.
 AC_HEADER_STDC
@@ -135,21 +183,28 @@ AC_HEADER_DIRENT
 dnl Checks for functions.
 AC_FUNC_CLOSEDIR_VOID
 
-AC_CHECK_FUNCS_ONCE(isascii iswctype setlocale wcscoll)
+AC_CHECK_FUNCS_ONCE(isascii setlocale)
 
 dnl I18N feature
-AM_GNU_GETTEXT_VERSION([0.17])
+AM_GNU_GETTEXT_VERSION([0.18])
 AM_GNU_GETTEXT([external])
 
 dnl Some installers want to be informed if we do not use our regex.
 dnl For example, if the host platform uses dynamic linking and the installer
 dnl knows that the grep may be invoked on other hosts with buggy libraries,
 dnl then the installer should configure --with-included-regex.
+AM_CONDITIONAL([USE_INCLUDED_REGEX], [test "$ac_use_included_regex" = yes])
 if test "$ac_use_included_regex" = no; then
   AC_MSG_WARN([Included lib/regex.c not used])
 fi
 
 gl_FUNC_PCRE
+
+case $host_os in
+  mingw*) suffix=w32 ;;
+  *) suffix=posix ;;
+esac
+AC_CONFIG_LINKS([lib/colorize.c:lib/colorize-$suffix.c])
 
 AC_CONFIG_FILES([
   Makefile
@@ -158,7 +213,8 @@ AC_CONFIG_FILES([
   tests/Makefile
   po/Makefile.in
   doc/Makefile
-  vms/Makefile
   gnulib-tests/Makefile
 ])
+GREP="$ac_abs_top_builddir/src/grep"
+EGREP="$ac_abs_top_builddir/src/grep -E"
 AC_OUTPUT

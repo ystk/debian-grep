@@ -1,5 +1,5 @@
 /* pcresearch.c - searching subroutines using PCRE for grep.
-   Copyright 2000, 2007, 2009-2010 Free Software Foundation, Inc.
+   Copyright 2000, 2007, 2009-2012 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,12 +39,12 @@ Pcompile (char const *pattern, size_t size)
 {
 #if !HAVE_LIBPCRE
   error (EXIT_TROUBLE, 0, "%s",
-	 _("support for the -P option is not compiled into "
-	   "this --disable-perl-regexp binary"));
+         _("support for the -P option is not compiled into "
+           "this --disable-perl-regexp binary"));
 #else
   int e;
   char const *ep;
-  char *re = xmalloc (4 * size + 7);
+  char *re = xnmalloc (4, size + 7);
   int flags = PCRE_MULTILINE | (match_icase ? PCRE_CASELESS : 0);
   char const *patlim = pattern + size;
   char *n = re;
@@ -75,7 +75,7 @@ Pcompile (char const *pattern, size_t size)
       memcpy (n, p, pnul - p);
       n += pnul - p;
       for (p = pnul; pattern < p && p[-1] == '\\'; p--)
-	continue;
+        continue;
       n -= (pnul - p) & 1;
       strcpy (n, "\\000");
       n += 4;
@@ -103,10 +103,11 @@ Pcompile (char const *pattern, size_t size)
 
 size_t
 Pexecute (char const *buf, size_t size, size_t *match_size,
-	  char const *start_ptr)
+          char const *start_ptr)
 {
 #if !HAVE_LIBPCRE
-  abort ();
+  /* We can't get here, because Pcompile would have been called earlier.  */
+  error (EXIT_TROUBLE, 0, _("internal error"));
   return -1;
 #else
   /* This array must have at least two elements; everything after that
@@ -133,6 +134,9 @@ Pexecute (char const *buf, size_t size, size_t *match_size,
       if (start_ptr && start_ptr >= line_end)
         continue;
 
+      if (INT_MAX < line_end - line_buf)
+        error (EXIT_TROUBLE, 0, _("exceeded PCRE's line length limit"));
+
       e = pcre_exec (cre, extra, line_buf, line_end - line_buf,
                      start_ofs < 0 ? 0 : start_ofs, 0,
                      sub, sizeof sub / sizeof *sub);
@@ -141,16 +145,20 @@ Pexecute (char const *buf, size_t size, size_t *match_size,
   if (e <= 0)
     {
       switch (e)
-	{
-	case PCRE_ERROR_NOMATCH:
-	  return -1;
+        {
+        case PCRE_ERROR_NOMATCH:
+          return -1;
 
-	case PCRE_ERROR_NOMEMORY:
-	  error (EXIT_TROUBLE, 0, _("memory exhausted"));
+        case PCRE_ERROR_NOMEMORY:
+          error (EXIT_TROUBLE, 0, _("memory exhausted"));
 
-	default:
-	  abort ();
-	}
+        case PCRE_ERROR_MATCHLIMIT:
+          error (EXIT_TROUBLE, 0,
+                 _("exceeded PCRE's backtracking limit"));
+
+        default:
+          abort ();
+        }
     }
   else
     {
@@ -160,18 +168,18 @@ Pexecute (char const *buf, size_t size, size_t *match_size,
       char const *buflim = buf + size;
       char eol = eolbyte;
       if (!start_ptr)
-	{
-	  /* FIXME: The case when '\n' is not found indicates a bug:
-	     Since grep is line oriented, the match should never contain
-	     a newline, so there _must_ be a newline following.
-	   */
-	  if (!(end = memchr (end, eol, buflim - end)))
-	    end = buflim;
-	  else
-	    end++;
-	  while (buf < beg && beg[-1] != eol)
-	    --beg;
-	}
+        {
+          /* FIXME: The case when '\n' is not found indicates a bug:
+             Since grep is line oriented, the match should never contain
+             a newline, so there _must_ be a newline following.
+           */
+          if (!(end = memchr (end, eol, buflim - end)))
+            end = buflim;
+          else
+            end++;
+          while (buf < beg && beg[-1] != eol)
+            --beg;
+        }
 
       *match_size = end - beg;
       return beg - buf;
