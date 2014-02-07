@@ -4,10 +4,7 @@
 static void
 Gcompile (char const *pattern, size_t size)
 {
-  GEAcompile (pattern, size,
-	      RE_SYNTAX_GREP
-	      | RE_HAT_LISTS_NOT_NEWLINE
-	      | RE_NO_EMPTY_RANGES);
+  GEAcompile (pattern, size, RE_SYNTAX_GREP | RE_NO_EMPTY_RANGES);
 }
 
 static void
@@ -34,5 +31,5 @@ struct matcher const matchers[] = {
 const char before_options[] =
 N_("PATTERN is, by default, a basic regular expression (BRE).\n");
 const char after_options[] =
-N_("`egrep' means `grep -E'.  `fgrep' means `grep -F'.\n\
-Direct invocation as either `egrep' or `fgrep' is deprecated.\n");
+N_("'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n\
+Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n");

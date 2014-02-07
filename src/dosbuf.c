@@ -1,5 +1,5 @@
 /* dosbuf.c
-   Copyright (C) 1992, 1997-2002, 2004-2010 Free Software Foundation, Inc.
+   Copyright (C) 1992, 1997-2002, 2004-2012 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -124,9 +124,9 @@ undossify_input (char *buf, size_t buflen)
                   if (inp_map_idx >= dos_pos_map_size - 1)
                     {
                       dos_pos_map_size = inp_map_idx ? inp_map_idx * 2 : 1000;
-                      dos_pos_map = xrealloc((char *)dos_pos_map,
-					     dos_pos_map_size *
-					     sizeof(struct dos_map));
+                      dos_pos_map = xrealloc(dos_pos_map,
+                                             dos_pos_map_size *
+                                             sizeof(struct dos_map));
                     }
 
                   if (!inp_map_idx)

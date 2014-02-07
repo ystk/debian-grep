@@ -1,5 +1,5 @@
 ## Process this file with automake to create Makefile.in
-# Copyright 1997-1998, 2005-2010 Free Software Foundation, Inc.
+# Copyright 1997-1998, 2005-2012 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,41 +22,73 @@ AM_CFLAGS = $(WARN_CFLAGS) $(WERROR_CFLAGS)
 AM_LDFLAGS = $(IGNORE_UNUSED_LIBRARIES_CFLAGS)
 LDADD = ../lib/libgreputils.a $(LIBINTL) ../lib/libgreputils.a
 
+# Remove this definition once the failing test passes.
+XFAIL_TESTS = \
+  word-delim-multibyte \
+  grep-dir
+
+# Equivalence classes are only supported when using the system
+# matcher (which means only with glibc).
+if USE_INCLUDED_REGEX
+XFAIL_TESTS += equiv-classes
+endif
+XFAIL_TESTS += turkish-I
+
 TESTS =						\
-  backref.sh					\
+  backref					\
+  backref-multibyte-slow			\
   backref-word					\
-  bre.sh					\
+  big-match					\
+  bogus-wctob					\
+  bre						\
   case-fold-backref				\
   case-fold-backslash-w				\
   case-fold-char-class				\
   case-fold-char-range				\
   case-fold-char-type				\
   char-class-multibyte				\
+  dfa-heap-overrun				\
   dfaexec-multibyte				\
   empty						\
-  ere.sh					\
+  epipe						\
+  equiv-classes                                 \
+  ere						\
   euc-mb					\
   fedora					\
   fgrep-infloop					\
-  file.sh					\
+  file						\
   fmbtest					\
   foad1						\
+  grep-dev-null					\
+  grep-dir					\
   help-version					\
+  ignore-mmap					\
+  in-eq-out-infloop                             \
   include-exclude				\
-  khadafy.sh					\
+  inconsistent-range                            \
+  khadafy					\
   max-count-vs-context				\
-  options.sh					\
-  pcre.sh					\
+  unibyte-bracket-expr				\
+  high-bit-range				\
+  options					\
+  pcre						\
+  pcre-abort					\
   pcre-z					\
-  reversed-range-endpoints			\
-  sjis-mb					\
-  spencer1.sh					\
-  spencer1-locale				\
-  status.sh					\
   prefix-of-multibyte				\
-  warning.sh					\
+  r-dot						\
+  repetition-overflow				\
+  reversed-range-endpoints			\
+  skip-device					\
+  sjis-mb					\
+  spencer1					\
+  spencer1-locale				\
+  status					\
+  symlink					\
+  turkish-I					\
+  warn-char-classes				\
+  word-delim-multibyte				\
   word-multi-file				\
-  yesno.sh
+  yesno
 
 EXTRA_DIST =					\
   $(TESTS)					\
@@ -72,36 +104,35 @@ EXTRA_DIST =					\
   spencer1.tests				\
   spencer1-locale.awk
 
-CLEANFILES = \
-  spencer1.script bre.script ere.script khadafy.out patfile \
-  cspatfile csinput yesno.txt 112869.out 116909.in 116909.list \
-  116909.out 123362.out 161700.out 171379.out 179698.out \
-  204255.first 204255.second
+# Default to a nonzero value.  Environment overrides.
+# http://udrepper.livejournal.com/11429.html
+MALLOC_PERTURB_ = 1
 
 TESTS_ENVIRONMENT =				\
   tmp__=$$TMPDIR; test -d "$$tmp__" || tmp__=.;	\
   TMPDIR=$$tmp__; export TMPDIR;		\
-  exec 9>&2;					\
-  shell_or_perl_() {				\
-    if grep '^\#!/usr/bin/perl' "$$1" > /dev/null; then			\
-      if $(PERL) -e 'use warnings' > /dev/null 2>&1; then		\
-	grep '^\#!/usr/bin/perl -T' "$$1" > /dev/null && T_=T || T_=;	\
-        $(PERL) -w$$T_ -I$(srcdir) -MCoreutils				\
-	      -M"CuTmpdir qw($$f)" -- "$$1";	\
-      else					\
-	echo 1>&2 "$$tst: configure did not find a usable version of Perl," \
-	  "so skipping this test";		\
-	(exit 77);				\
-      fi;					\
-    else					\
-      $(SHELL) "$$1";				\
-    fi;						\
-  };						\
-  export					\
+						\
+  if test -n "$$BASH_VERSION" || (eval "export v=x") 2>/dev/null; then \
+    export_with_values () { export "$$@"; };		\
+  else							\
+    export_with_values ()				\
+    {							\
+      sed_extract_var='s/=.*//';			\
+      sed_quote_value="s/'/'\\\\''/g;s/=\\(.*\\)/='\\1'/";\
+      for arg in "$$@"; do				\
+        var=`echo "$$arg" | sed "$$sed_extract_var"`;	\
+        arg=`echo "$$arg" | sed "$$sed_quote_value"`;	\
+        eval "$$arg";					\
+        export "$$var";					\
+      done;						\
+    };							\
+  fi;							\
+						\
+  export_with_values				\
+  VERSION='$(VERSION)'                          \
   LOCALE_FR='$(LOCALE_FR)'                      \
   LOCALE_FR_UTF8='$(LOCALE_FR_UTF8)'            \
   AWK=$(AWK)					\
-  GREP=$(top_builddir)/src/grep			\
   GREP_OPTIONS=''				\
   LC_ALL=C					\
   abs_top_builddir='$(abs_top_builddir)'	\
@@ -113,11 +144,25 @@ TESTS_ENVIRONMENT =				\
   CC='$(CC)'					\
   GREP_TEST_NAME=`echo $$tst|sed 's,^\./,,;s,/,-,g'` \
   MAKE=$(MAKE)					\
+  MALLOC_PERTURB_=$(MALLOC_PERTURB_)		\
   PACKAGE_BUGREPORT='$(PACKAGE_BUGREPORT)'	\
   PACKAGE_VERSION=$(PACKAGE_VERSION)		\
   PERL='$(PERL)'				\
   SHELL='$(SHELL)'				\
   PATH='$(abs_top_builddir)/src$(PATH_SEPARATOR)'"$$PATH" \
-  ; shell_or_perl_
+  ; 9>&2
+
+LOG_COMPILER = $(SHELL)
 
 VERBOSE = yes
+
+check: check_executable_TESTS
+.PHONY: check_executable_TESTS
+check_executable_TESTS: Makefile
+	$(AM_V_GEN)fail=0;						\
+        cd $(srcdir) && for i in $(TESTS); do				\
+	  test -x $$i || { fail=1; echo $$i >&2; };			\
+	done;								\
+	test $$fail = 1							\
+          && { echo the above test scripts are not executable >&2; exit 1; } \
+          || :

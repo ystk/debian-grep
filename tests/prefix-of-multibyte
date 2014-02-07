@@ -1,9 +1,9 @@
 #!/bin/sh
 # This would mistakenly print a line prior to grep-2.6.2.
-: ${srcdir=.}
-. "$srcdir/init.sh"; path_prepend_ ../src
+. "${srcdir=.}/init.sh"; path_prepend_ ../src
 
 require_en_utf8_locale_
+require_compiled_in_MB_support
 
 encode() { echo "$1" | tr ABC '\357\274\241'; }
 
@@ -14,7 +14,7 @@ for LOC in en_US.UTF-8 $LOCALE_FR_UTF8; do
     out=out-$opt-$LOC
     encode ABC | LC_ALL=$LOC grep $opt "$(encode A)" > $out 2>&1
     test $? = 1 || fail=1
-    compare $out /dev/null || fail=1
+    compare /dev/null $out || fail=1
   done
 done
 
