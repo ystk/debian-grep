@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: grep 2.8\n"
 "Report-Msgid-Bugs-To: bug-grep@gnu.org\n"
-"POT-Creation-Date: 2012-04-23 16:08+0200\n"
+"POT-Creation-Date: 2014-06-03 06:49-0700\n"
 "PO-Revision-Date: 2011-05-18 15:48-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -29,7 +29,7 @@ msgstr "argóint dhébhríoch %s le haghaidh %s"
 msgid "Valid arguments are:"
 msgstr "Na hargóintí bailí:"
 
-#: lib/closeout.c:112 src/main.c:894
+#: lib/closeout.c:112 src/grep.c:949
 #, c-format
 msgid "write error"
 msgstr "earráid sa scríobh"
@@ -93,8 +93,8 @@ msgstr "%s: ní cheadaítear argóint i ndiaidh rogha '-W %s'\n"
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: tá argóint de dhíth i ndiaidh rogha '-W %s'\n"
 
-#: lib/obstack.c:413 lib/obstack.c:415 lib/xalloc-die.c:34 src/kwset.c:178
-#: src/kwset.c:186 src/kwset.c:409 src/pcresearch.c:153
+#: lib/obstack.c:416 lib/obstack.c:418 lib/xalloc-die.c:34
+#: src/pcresearch.c:177
 #, c-format
 msgid "memory exhausted"
 msgstr "cuimhne ídithe"
@@ -138,75 +138,75 @@ msgstr "`"
 msgid "'"
 msgstr "'"
 
-#: lib/regcomp.c:130
+#: lib/regcomp.c:131
 msgid "Success"
 msgstr "D'éirigh leis"
 
-#: lib/regcomp.c:133
+#: lib/regcomp.c:134
 msgid "No match"
 msgstr "Níl a leithéid ann"
 
-#: lib/regcomp.c:136
+#: lib/regcomp.c:137
 msgid "Invalid regular expression"
 msgstr "Slonn ionadaíochta neamhbhailí"
 
-#: lib/regcomp.c:139
+#: lib/regcomp.c:140
 msgid "Invalid collation character"
 msgstr "Carachtar neamhbhailí cóimheasa"
 
-#: lib/regcomp.c:142
+#: lib/regcomp.c:143
 msgid "Invalid character class name"
 msgstr "Ainm neamhbhailí ar aicme charachtar"
 
-#: lib/regcomp.c:145
+#: lib/regcomp.c:146
 msgid "Trailing backslash"
 msgstr "Cúlslais chun deiridh"
 
-#: lib/regcomp.c:148
+#: lib/regcomp.c:149
 msgid "Invalid back reference"
 msgstr "Cúltagairt neamhbhailí"
 
-#: lib/regcomp.c:151
+#: lib/regcomp.c:152
 msgid "Unmatched [ or [^"
 msgstr "[ nó [^ corr"
 
-#: lib/regcomp.c:154
+#: lib/regcomp.c:155
 msgid "Unmatched ( or \\("
 msgstr "( nó \\( corr"
 
-#: lib/regcomp.c:157
+#: lib/regcomp.c:158
 msgid "Unmatched \\{"
 msgstr "\\{ corr"
 
-#: lib/regcomp.c:160 src/dfa.c:1373
+#: lib/regcomp.c:161
 msgid "Invalid content of \\{\\}"
 msgstr "Ábhar neamhbhailí idir \\{\\}"
 
-#: lib/regcomp.c:163
+#: lib/regcomp.c:164
 msgid "Invalid range end"
 msgstr "Deireadh raoin neamhbhailí"
 
-#: lib/regcomp.c:166
+#: lib/regcomp.c:167
 msgid "Memory exhausted"
 msgstr "Cuimhne ídithe"
 
-#: lib/regcomp.c:169
+#: lib/regcomp.c:170
 msgid "Invalid preceding regular expression"
 msgstr "Is neamhbhailí an slonn ionadaíochta roimhe seo"
 
-#: lib/regcomp.c:172
+#: lib/regcomp.c:173
 msgid "Premature end of regular expression"
 msgstr "Deireadh an tsloinn gan choinne"
 
-#: lib/regcomp.c:175 src/dfa.c:1376
+#: lib/regcomp.c:176
 msgid "Regular expression too big"
 msgstr "Slonn ionadaíochta rómhór"
 
-#: lib/regcomp.c:178
+#: lib/regcomp.c:179
 msgid "Unmatched ) or \\)"
 msgstr ") nó \\) corr"
 
-#: lib/regcomp.c:703
+#: lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Níl aon slonn ionadaíochta roimhe seo"
 
@@ -354,7 +354,7 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: lib/version-etc.c:245 src/main.c:1572
+#: lib/version-etc.c:245 src/grep.c:1620
 #, c-format
 msgid ""
 "\n"
@@ -378,7 +378,7 @@ msgstr "Leathanach baile %s: <%s>\n"
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
 msgstr "Leathanach baile %s: <http://www.gnu.org/software/%s/>\n"
 
-#: lib/version-etc.c:256 src/main.c:1575
+#: lib/version-etc.c:256 src/grep.c:1623
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
 "Cabhair ghinearálta maidir le bogearraí GNU: <http://www.gnu.org/gethelp/>\n"
@@ -398,132 +398,116 @@ msgstr "iarmhír neamhbhailí tar éis argóint %s%s `%s'"
 msgid "%s%s argument '%s' too large"
 msgstr "argóint %s%s rómhór: `%s'"
 
-#: src/dfa.c:953 src/dfa.c:956 src/dfa.c:976 src/dfa.c:986 src/dfa.c:998
-#: src/dfa.c:1049 src/dfa.c:1058 src/dfa.c:1061 src/dfa.c:1066 src/dfa.c:1079
-#: src/dfa.c:1137
+#: src/dfa.c:1017 src/dfa.c:1020 src/dfa.c:1039 src/dfa.c:1049 src/dfa.c:1061
+#: src/dfa.c:1097 src/dfa.c:1106 src/dfa.c:1109 src/dfa.c:1114 src/dfa.c:1128
+#: src/dfa.c:1174
 msgid "unbalanced ["
 msgstr "[ corr"
 
-#: src/dfa.c:1007
+#: src/dfa.c:1073
 msgid "invalid character class"
 msgstr "Aicme charachtar neamhbhailí"
 
-#: src/dfa.c:1174
+#: src/dfa.c:1217
 msgid "character class syntax is [[:space:]], not [:space:]"
 msgstr ""
 "Is é [[:space:]] an chomhréir cheart in aicme carachtar, in ionad [:space:]"
 
-#: src/dfa.c:1226
+#: src/dfa.c:1265
 msgid "unfinished \\ escape"
 msgstr "Seicheamh éalúcháin \\ gan chríochnú"
 
-#: src/dfa.c:1761
+#: src/dfa.c:1412
+#, fuzzy
+msgid "invalid content of \\{\\}"
+msgstr "Ábhar neamhbhailí idir \\{\\}"
+
+#: src/dfa.c:1415
+#, fuzzy
+msgid "regular expression too big"
+msgstr "Slonn ionadaíochta rómhór"
+
+#: src/dfa.c:1845
 msgid "unbalanced ("
 msgstr "( corr"
 
-#: src/dfa.c:1891
+#: src/dfa.c:1971
 msgid "no syntax specified"
 msgstr "Níor sonraíodh aon chomhréir"
 
-#: src/dfa.c:1899
+#: src/dfa.c:1979
 msgid "unbalanced )"
 msgstr ") corr"
 
-#: src/egrep.c:16
-msgid "PATTERN is an extended regular expression (ERE).\n"
-msgstr "Is slonn ionadaíochta feabhsaithe (ERE) é PATRÚN.\n"
-
-#: src/egrep.c:18
-#, fuzzy
-msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
-msgstr "Tá an t-ordú `egrep' imithe i léig; úsáid `grep -E' ina ionad.\n"
-
-#: src/fgrep.c:10
-msgid "PATTERN is a set of newline-separated fixed strings.\n"
-msgstr "Is tacar teaghrán é PATRÚN, scartha le línte nua.\n"
-
-#: src/fgrep.c:12
-#, fuzzy
-msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
-msgstr "Tá an t-ordú `fgrep' imithe i léig; úsáid `grep -F' ina ionad.\n"
-
-#: src/grep.c:32
-msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
-msgstr ""
-"Is slonn ionadaíochta bunúsach (BRE) é PATRÚN, de réir réamhshocraithe.\n"
-
-#: src/grep.c:34
-#, fuzzy
-msgid ""
-"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
-"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
-msgstr ""
-"`egrep' = `grep -E', agus `fgrep' = `grep -F'.\n"
-"Tá na horduithe `egrep' agus `fgrep' imithe i léig.\n"
-
 #. This is a proper name. See the gettext manual, section Names.
-#: src/main.c:58
+#: src/grep.c:57
 msgid "Mike Haertel"
 msgstr "Mike Haertel"
 
-#: src/main.c:59
+#: src/grep.c:58
 msgid "others, see <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 msgstr ""
 "agus daoine eile, féach ar <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 
-#: src/main.c:448
+#: src/grep.c:502
 msgid "invalid context length argument"
 msgstr "Tá an argóint a shonraíonn an méid chomhthéacs neamhbhailí"
 
-#: src/main.c:503
+#: src/grep.c:571
 msgid "lseek failed"
 msgstr "theip ar lseek"
 
-#: src/main.c:650
+#: src/grep.c:704
 #, c-format
 msgid "input is too large to count"
 msgstr "Tá an t-ionchur rómhór le háireamh"
 
 # using lit. "matching string" throughout for "match" - KPS
-#: src/main.c:1205
+#: src/grep.c:1257
 #, c-format
 msgid "Binary file %s matches\n"
 msgstr "Teaghrán comhoiriúnach sa chomhad dhénártha %s\n"
 
-#: src/main.c:1256
+#: src/grep.c:1300
 #, c-format
 msgid "warning: %s: %s"
 msgstr "rabhadh: %s: %s"
 
-#: src/main.c:1257
+#: src/grep.c:1301
 msgid "recursive directory loop"
 msgstr "lúb athchúrsach i gcomhadlann"
 
-#: src/main.c:1400
+#: src/grep.c:1449
 #, c-format
 msgid "input file %s is also the output"
 msgstr ""
 
-#: src/main.c:1458
+#: src/grep.c:1507
 msgid "(standard input)"
 msgstr "(gnáth-ionchur)"
 
-#: src/main.c:1474 src/main.c:1481
+#: src/grep.c:1523 src/grep.c:1530
 #, c-format
 msgid "Usage: %s [OPTION]... PATTERN [FILE]...\n"
 msgstr "Úsáid: %s [ROGHA]... PATRÚN [COMHAD]...\n"
 
-#: src/main.c:1476
+#: src/grep.c:1525
 #, fuzzy, c-format
 msgid "Try '%s --help' for more information.\n"
 msgstr "Bain triail as `%s --help' chun tuilleadh eolais a fháil.\n"
 
-#: src/main.c:1482
+#: src/grep.c:1531
 #, c-format
 msgid "Search for PATTERN in each FILE or standard input.\n"
 msgstr "Déan cuardach ar PATRÚN i ngach COMHAD nó sa ghnáth-ionchur.\n"
 
-#: src/main.c:1485
+#: src/grep.c:1532
+#, c-format
+msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
+msgstr ""
+"Is slonn ionadaíochta bunúsach (BRE) é PATRÚN, de réir réamhshocraithe.\n"
+
+#: src/grep.c:1533
 #, c-format
 msgid ""
 "Example: %s -i 'hello world' menu.h main.c\n"
@@ -534,7 +518,7 @@ msgstr ""
 "\n"
 "Roghnú agus léirmhíniú sloinn ionadaíochta:\n"
 
-#: src/main.c:1490
+#: src/grep.c:1537
 #, c-format
 msgid ""
 "  -E, --extended-regexp     PATTERN is an extended regular expression (ERE)\n"
@@ -550,7 +534,7 @@ msgstr ""
 "  -G, --basic-regexp        is slonn ionadaíochta bunúsach (BRE) é PATRÚN\n"
 "  -P, --perl-regexp         is slonn ionadaíochta Perl é PATRÚN\n"
 
-#: src/main.c:1496
+#: src/grep.c:1543
 #, c-format
 msgid ""
 "  -e, --regexp=PATTERN      use PATTERN for matching\n"
@@ -567,16 +551,15 @@ msgstr ""
 "  -x, --line-regexp         meaitseálann PATRÚN línte iomlána amháin\n"
 "  -z, --null-data           léiríonn bearta '0' na foircinn línte (vs. \\n)\n"
 
-#: src/main.c:1503
+#: src/grep.c:1550
 #, fuzzy, c-format
 msgid ""
 "\n"
 "Miscellaneous:\n"
 "  -s, --no-messages         suppress error messages\n"
 "  -v, --invert-match        select non-matching lines\n"
-"  -V, --version             print version information and exit\n"
-"      --help                display this help and exit\n"
-"      --mmap                deprecated no-op; evokes a warning\n"
+"  -V, --version             display version information and exit\n"
+"      --help                display this help text and exit\n"
 msgstr ""
 "\n"
 "Roghanna éagsúla:\n"
@@ -586,7 +569,7 @@ msgstr ""
 "      --help                taispeáin an chabhair seo agus scoir\n"
 "      --mmap                ná bac leis; comhoiriúnacht shiarghabhálach\n"
 
-#: src/main.c:1511
+#: src/grep.c:1557
 #, fuzzy, c-format
 msgid ""
 "\n"
@@ -610,13 +593,13 @@ msgstr ""
 "  -h, --no-filename         ná taispeáin ainmneacha comhad\n"
 "      --label=LIPÉAD        úsáid LIPÉAD mar ainm ar an ngnáth-ionchur\n"
 
-#: src/main.c:1522
-#, c-format
+#: src/grep.c:1568
+#, fuzzy, c-format
 msgid ""
 "  -o, --only-matching       show only the part of a line matching PATTERN\n"
 "  -q, --quiet, --silent     suppress all normal output\n"
 "      --binary-files=TYPE   assume that binary files are TYPE;\n"
-"                            TYPE is `binary', `text', or `without-match'\n"
+"                            TYPE is 'binary', 'text', or 'without-match'\n"
 "  -a, --text                equivalent to --binary-files=text\n"
 msgstr ""
 "  -o, --only-matching       ná taispeáin ach an teaghrán comhoiriúnach\n"
@@ -625,14 +608,14 @@ msgstr ""
 "                            CINEÁL = 'binary', 'text', nó 'without-match'\n"
 "  -a, --text                ar comhbhrí le '--binary-files=text'\n"
 
-#: src/main.c:1529
+#: src/grep.c:1575
 #, fuzzy, c-format
 msgid ""
 "  -I                        equivalent to --binary-files=without-match\n"
 "  -d, --directories=ACTION  how to handle directories;\n"
-"                            ACTION is `read', `recurse', or `skip'\n"
+"                            ACTION is 'read', 'recurse', or 'skip'\n"
 "  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;\n"
-"                            ACTION is `read' or `skip'\n"
+"                            ACTION is 'read' or 'skip'\n"
 "  -r, --recursive           like --directories=recurse\n"
 "  -R, --dereference-recursive  likewise, but follow all symlinks\n"
 msgstr ""
@@ -643,7 +626,7 @@ msgstr ""
 "                              agus soicéid; MODH = 'read' nó 'skip'\n"
 "  -R, -r, --recursive       ar comhbhrí le '--directories=recurse'\n"
 
-#: src/main.c:1538
+#: src/grep.c:1584
 #, c-format
 msgid ""
 "      --include=FILE_PATTERN  search only files that match FILE_PATTERN\n"
@@ -660,7 +643,7 @@ msgstr ""
 "                              haon phatrún i gCOMHAD\n"
 "      --exclude-dir=PATRÚN  ná déan cuardach i gcomhadlanna comhoiriúnacha.\n"
 
-#: src/main.c:1544
+#: src/grep.c:1590
 #, c-format
 msgid ""
 "  -L, --files-without-match  print only names of FILEs containing no match\n"
@@ -679,7 +662,7 @@ msgstr ""
 "  -T, --initial-tab         Ailínigh na táib (más gá)\n"
 "  -Z, --null                priontáil beart '0' i ndiaidh ainm an chomhaid\n"
 
-#: src/main.c:1550
+#: src/grep.c:1596
 #, c-format
 msgid ""
 "\n"
@@ -694,13 +677,13 @@ msgstr ""
 "  -A, --after-context=UIMH  taispeáin UIMH líne de chomhthéacs deiridh\n"
 "  -C, --context=UIMHIR      taispeáin UIMHIR líne de chomhthéacs\n"
 
-#: src/main.c:1557
+#: src/grep.c:1603
 #, fuzzy, c-format
 msgid ""
 "  -NUM                      same as --context=NUM\n"
 "      --color[=WHEN],\n"
 "      --colour[=WHEN]       use markers to highlight the matching strings;\n"
-"                            WHEN is `always', `never', or `auto'\n"
+"                            WHEN is 'always', 'never', or 'auto'\n"
 "  -U, --binary              do not strip CR characters at EOL (MSDOS/"
 "Windows)\n"
 "  -u, --unix-byte-offsets   report offsets as if CRs were not there\n"
@@ -716,7 +699,16 @@ msgstr ""
 "(MSDOS)\n"
 "\n"
 
-#: src/main.c:1567
+#: src/grep.c:1612
+#, fuzzy, c-format
+msgid ""
+"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
+"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
+msgstr ""
+"`egrep' = `grep -E', agus `fgrep' = `grep -F'.\n"
+"Tá na horduithe `egrep' agus `fgrep' imithe i léig.\n"
+
+#: src/grep.c:1615
 #, fuzzy, c-format
 msgid ""
 "When FILE is -, read standard input.  With no FILE, read . if a command-"
@@ -730,47 +722,37 @@ msgstr ""
 "Stádas scortha: 0 (roghnaíodh aon líne ar a laghad), 1 (níor roghnaíodh),\n"
 "nó 2 (trioblóid de shaghas éigin agus níor tugadh -q).\n"
 
-#: src/main.c:1573
+#: src/grep.c:1621
 #, c-format
 msgid "GNU Grep home page: <%s>\n"
 msgstr "Leathanach baile GNU Grep: <%s>\n"
 
-#: src/main.c:1605
-#, c-format
-msgid "%s can only use the %s pattern syntax"
-msgstr "Ní féidir le %s ach comhréir phatrúin %s a úsáid"
-
-#: src/main.c:1608
+#: src/grep.c:1687
 #, c-format
 msgid "conflicting matchers specified"
 msgstr "sonraíodh patrúin chontrártha"
 
-#: src/main.c:1622
+#: src/grep.c:1698
 #, c-format
 msgid "invalid matcher %s"
 msgstr "meaitseálaí neamhbhailí %s"
 
-#: src/main.c:1870
+#: src/grep.c:2006
 #, c-format
 msgid "unknown devices method"
 msgstr "modh anaithnid gléasanna"
 
-#: src/main.c:1999
+#: src/grep.c:2133
 #, c-format
 msgid "invalid max count"
 msgstr "uasmhéid neamhbhailí"
 
-#: src/main.c:2056
+#: src/grep.c:2190
 #, c-format
 msgid "unknown binary-files type"
 msgstr "cineál anaithnid de chomhad dénártha"
 
-#: src/main.c:2119
-#, c-format
-msgid "the --mmap option has been a no-op since 2010"
-msgstr ""
-
-#: src/pcresearch.c:42
+#: src/pcresearch.c:48
 msgid ""
 "support for the -P option is not compiled into this --disable-perl-regexp "
 "binary"
@@ -778,25 +760,62 @@ msgstr ""
 "Tiomsaíodh an clár dénártha seo le --disable-perl-regexp agus gan tacaíocht "
 "do rogha -P"
 
-#: src/pcresearch.c:56
+#: src/pcresearch.c:64
 #, c-format
 msgid "the -P option only supports a single pattern"
 msgstr "Ní thacaíonn rogha -P ach le patrún amháin"
 
 #: src/pcresearch.c:110
+#, c-format
+msgid "internal error (should never happen)"
+msgstr ""
+
+#: src/pcresearch.c:120
+#, c-format
+msgid "failed to allocate memory for the PCRE JIT stack"
+msgstr ""
+
+#: src/pcresearch.c:134
 #, fuzzy, c-format
 msgid "internal error"
 msgstr "earráid sa scríobh"
 
-#: src/pcresearch.c:138
+#: src/pcresearch.c:162
 #, c-format
 msgid "exceeded PCRE's line length limit"
 msgstr ""
 
-#: src/pcresearch.c:157
+#: src/pcresearch.c:181
 #, c-format
 msgid "exceeded PCRE's backtracking limit"
 msgstr ""
+
+#: src/pcresearch.c:185
+#, c-format
+msgid "invalid UTF-8 byte sequence in input"
+msgstr ""
+
+#: src/pcresearch.c:192
+#, fuzzy, c-format
+msgid "internal PCRE error: %d"
+msgstr "earráid sa scríobh"
+
+#~ msgid "PATTERN is an extended regular expression (ERE).\n"
+#~ msgstr "Is slonn ionadaíochta feabhsaithe (ERE) é PATRÚN.\n"
+
+#, fuzzy
+#~ msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
+#~ msgstr "Tá an t-ordú `egrep' imithe i léig; úsáid `grep -E' ina ionad.\n"
+
+#~ msgid "PATTERN is a set of newline-separated fixed strings.\n"
+#~ msgstr "Is tacar teaghrán é PATRÚN, scartha le línte nua.\n"
+
+#, fuzzy
+#~ msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
+#~ msgstr "Tá an t-ordú `fgrep' imithe i léig; úsáid `grep -F' ina ionad.\n"
+
+#~ msgid "%s can only use the %s pattern syntax"
+#~ msgstr "Ní féidir le %s ach comhréir phatrúin %s a úsáid"
 
 #~ msgid "unfinished repeat count"
 #~ msgstr "Tá líon na hathráite neamhiomlán"
@@ -831,10 +850,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Scoireadh ó phróiseáil teaghrán míchumtha GREP_COLORS=\"%s\" ag an "
 #~ "bhfotheaghrán atá fágtha: \"%s\""
-
-#, fuzzy
-#~ msgid "%s: option '%s' is ambiguous\n"
-#~ msgstr "%s: Tá an rogha '-W %s' débhríoch\n"
 
 #~ msgid ""
 #~ "\n"

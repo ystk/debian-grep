@@ -1,23 +1,25 @@
 # Italian translation of grep
-# Copyright (C) 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright (C) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the grep package.
 #
 # Marco d'Itri <md@linux.it>, 1999, 2001.
+# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
 #
-# Milo Casagrande <milo@casagrande.name>, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: grep-2.11.11-pre1\n"
+"Project-Id-Version: grep-2.19.12\n"
 "Report-Msgid-Bugs-To: bug-grep@gnu.org\n"
-"POT-Creation-Date: 2012-04-23 16:08+0200\n"
-"PO-Revision-Date: 2012-04-18 09:28+0200\n"
-"Last-Translator: Milo Casagrande <milo@casagrande.name>\n"
+"POT-Creation-Date: 2014-06-03 06:49-0700\n"
+"PO-Revision-Date: 2014-05-31 15:08+0100\n"
+"Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: lib/argmatch.c:133
 #, c-format
@@ -33,7 +35,7 @@ msgstr "argomento %s ambiguo per %s"
 msgid "Valid arguments are:"
 msgstr "Gli argomenti validi sono:"
 
-#: lib/closeout.c:112 src/main.c:894
+#: lib/closeout.c:112 src/grep.c:949
 #, c-format
 msgid "write error"
 msgstr "errore di scrittura"
@@ -97,8 +99,8 @@ msgstr "%s: l'opzione \"-W %s\" non accetta un argomento\n"
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: l'opzione \"-W %s\" richiede un argomento\n"
 
-#: lib/obstack.c:413 lib/obstack.c:415 lib/xalloc-die.c:34 src/kwset.c:178
-#: src/kwset.c:186 src/kwset.c:409 src/pcresearch.c:153
+#: lib/obstack.c:416 lib/obstack.c:418 lib/xalloc-die.c:34
+#: src/pcresearch.c:177
 #, c-format
 msgid "memory exhausted"
 msgstr "memoria esaurita"
@@ -142,76 +144,76 @@ msgstr "\""
 msgid "'"
 msgstr "\""
 
-#: lib/regcomp.c:130
+#: lib/regcomp.c:131
 msgid "Success"
 msgstr "Successo"
 
-#: lib/regcomp.c:133
+#: lib/regcomp.c:134
 msgid "No match"
 msgstr "Nessuna corrispondenza"
 
-#: lib/regcomp.c:136
+#: lib/regcomp.c:137
 msgid "Invalid regular expression"
 msgstr "Espressione regolare non valida"
 
 # (ndt) http://en.wikipedia.org/wiki/Collation
-#: lib/regcomp.c:139
+#: lib/regcomp.c:140
 msgid "Invalid collation character"
 msgstr "Carattere di collazione non valido"
 
-#: lib/regcomp.c:142
+#: lib/regcomp.c:143
 msgid "Invalid character class name"
 msgstr "Nome classe del carattere non valido"
 
-#: lib/regcomp.c:145
+#: lib/regcomp.c:146
 msgid "Trailing backslash"
 msgstr "Backslash finale"
 
-#: lib/regcomp.c:148
+#: lib/regcomp.c:149
 msgid "Invalid back reference"
 msgstr "Riferimento all'indietro non valido"
 
-#: lib/regcomp.c:151
+#: lib/regcomp.c:152
 msgid "Unmatched [ or [^"
 msgstr "[ o [^ senza corrispondenza"
 
-#: lib/regcomp.c:154
+#: lib/regcomp.c:155
 msgid "Unmatched ( or \\("
 msgstr "( o \\( senza corrispondenza"
 
-#: lib/regcomp.c:157
+#: lib/regcomp.c:158
 msgid "Unmatched \\{"
 msgstr "\\{ senza corrispondenza"
 
-#: lib/regcomp.c:160 src/dfa.c:1373
+#: lib/regcomp.c:161
 msgid "Invalid content of \\{\\}"
 msgstr "Contenuto di \\{\\} non valido"
 
-#: lib/regcomp.c:163
+#: lib/regcomp.c:164
 msgid "Invalid range end"
 msgstr "Limite massimo non valido"
 
-#: lib/regcomp.c:166
+#: lib/regcomp.c:167
 msgid "Memory exhausted"
 msgstr "Memoria esaurita"
 
-#: lib/regcomp.c:169
+#: lib/regcomp.c:170
 msgid "Invalid preceding regular expression"
 msgstr "Espressione regolare precedente non valida"
 
-#: lib/regcomp.c:172
+#: lib/regcomp.c:173
 msgid "Premature end of regular expression"
 msgstr "Fine prematura dell'espressione regolare"
 
-#: lib/regcomp.c:175 src/dfa.c:1376
+#: lib/regcomp.c:176
 msgid "Regular expression too big"
 msgstr "Espressione regolare troppo grande"
 
-#: lib/regcomp.c:178
+#: lib/regcomp.c:179
 msgid "Unmatched ) or \\)"
 msgstr ") o \\) senza corrispondenza"
 
-#: lib/regcomp.c:703
+#: lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Nessuna espressione regolare precedente"
 
@@ -361,7 +363,7 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: lib/version-etc.c:245 src/main.c:1572
+#: lib/version-etc.c:245 src/grep.c:1620
 #, c-format
 msgid ""
 "\n"
@@ -385,7 +387,7 @@ msgstr "Sito web di %s: <%s>\n"
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
 msgstr "Sito web di %s: <http://www.gnu.org/software/%s/>\n"
 
-#: lib/version-etc.c:256 src/main.c:1575
+#: lib/version-etc.c:256 src/grep.c:1623
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
 "Pagina di aiuto per l'utilizzo di software GNU: <http://www.gnu.org/gethelp/"
@@ -406,126 +408,111 @@ msgstr "il suffisso nell'argomento \"%3$s\" di %1$s%2$s non è valido"
 msgid "%s%s argument '%s' too large"
 msgstr "l'argomento \"%3$s\" di %1$s%2$s è troppo grande"
 
-#: src/dfa.c:953 src/dfa.c:956 src/dfa.c:976 src/dfa.c:986 src/dfa.c:998
-#: src/dfa.c:1049 src/dfa.c:1058 src/dfa.c:1061 src/dfa.c:1066 src/dfa.c:1079
-#: src/dfa.c:1137
+#: src/dfa.c:1017 src/dfa.c:1020 src/dfa.c:1039 src/dfa.c:1049 src/dfa.c:1061
+#: src/dfa.c:1097 src/dfa.c:1106 src/dfa.c:1109 src/dfa.c:1114 src/dfa.c:1128
+#: src/dfa.c:1174
 msgid "unbalanced ["
 msgstr "[ non bilanciata"
 
-#: src/dfa.c:1007
+#: src/dfa.c:1073
 msgid "invalid character class"
 msgstr "Classe del carattere non valido"
 
-#: src/dfa.c:1174
+#: src/dfa.c:1217
 msgid "character class syntax is [[:space:]], not [:space:]"
 msgstr "La sintassi per la classe di caratteri è [[:space:]], non [:space:]"
 
-#: src/dfa.c:1226
+#: src/dfa.c:1265
 msgid "unfinished \\ escape"
 msgstr "Escape \\ incompleto"
 
-#: src/dfa.c:1761
+#: src/dfa.c:1412
+msgid "invalid content of \\{\\}"
+msgstr "Contenuto di \\{\\} non valido"
+
+#: src/dfa.c:1415
+msgid "regular expression too big"
+msgstr "Espressione regolare troppo grande"
+
+#: src/dfa.c:1845
 msgid "unbalanced ("
 msgstr "( non bilanciata"
 
-#: src/dfa.c:1891
+#: src/dfa.c:1971
 msgid "no syntax specified"
 msgstr "Nessuna sintassi specificata"
 
-#: src/dfa.c:1899
+#: src/dfa.c:1979
 msgid "unbalanced )"
 msgstr ") non bilanciata"
 
-#: src/egrep.c:16
-msgid "PATTERN is an extended regular expression (ERE).\n"
-msgstr "MODELLO è un'espressione regolare estesa (ERE).\n"
-
-#: src/egrep.c:18
-msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
-msgstr "L'invocazione come \"egrep\" è deprecata, usare \"grep -E\".\n"
-
-#: src/fgrep.c:10
-msgid "PATTERN is a set of newline-separated fixed strings.\n"
-msgstr "MODELLO è un insieme di stringhe letterali separate da newline.\n"
-
-#: src/fgrep.c:12
-msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
-msgstr "L'invocazione come \"fgrep\" è deprecata, usare \"grep -F\".\n"
-
-#: src/grep.c:32
-msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
-msgstr ""
-"MODELLO è, in modo predefinito, un'espressione regolare di base (BRE).\n"
-
-#: src/grep.c:34
-msgid ""
-"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
-"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
-msgstr ""
-"\"egrep\" significa \"grep -E\", \"fgrep\" significa \"grep -F\".\n"
-"L'invocazione diretta come \"egrep\" o \"fgrep\" è deprecata.\n"
-
 #. This is a proper name. See the gettext manual, section Names.
-#: src/main.c:58
+#: src/grep.c:57
 msgid "Mike Haertel"
 msgstr "Mike Haertel"
 
-#: src/main.c:59
+#: src/grep.c:58
 msgid "others, see <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 msgstr "altri, consultare <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 
-#: src/main.c:448
+#: src/grep.c:502
 msgid "invalid context length argument"
 msgstr "argomento della lunghezza del contesto non valido"
 
-#: src/main.c:503
+#: src/grep.c:571
 msgid "lseek failed"
 msgstr "lseek non riuscita"
 
-#: src/main.c:650
+#: src/grep.c:704
 #, c-format
 msgid "input is too large to count"
 msgstr "l'input è troppo grande per essere contato"
 
-#: src/main.c:1205
+#: src/grep.c:1257
 #, c-format
 msgid "Binary file %s matches\n"
 msgstr "Il file binario %s corrisponde\n"
 
-#: src/main.c:1256
+#: src/grep.c:1300
 #, c-format
 msgid "warning: %s: %s"
 msgstr "attenzione: %s: %s"
 
-#: src/main.c:1257
+#: src/grep.c:1301
 msgid "recursive directory loop"
 msgstr "ciclo ricorsivo di directory"
 
-#: src/main.c:1400
+#: src/grep.c:1449
 #, c-format
 msgid "input file %s is also the output"
-msgstr "il file di input %s è anche l'output"
+msgstr "il file di input %s è anche l'output"
 
-#: src/main.c:1458
+#: src/grep.c:1507
 msgid "(standard input)"
 msgstr "(standard input)"
 
-#: src/main.c:1474 src/main.c:1481
+#: src/grep.c:1523 src/grep.c:1530
 #, c-format
 msgid "Usage: %s [OPTION]... PATTERN [FILE]...\n"
 msgstr "Uso: %s [OPZIONE]... MODELLO [FILE]...\n"
 
-#: src/main.c:1476
+#: src/grep.c:1525
 #, c-format
 msgid "Try '%s --help' for more information.\n"
 msgstr "Usare \"%s --help\" per ulteriori informazioni.\n"
 
-#: src/main.c:1482
+#: src/grep.c:1531
 #, c-format
 msgid "Search for PATTERN in each FILE or standard input.\n"
 msgstr "Cerca il MODELLO in ogni FILE o nello standard input.\n"
 
-#: src/main.c:1485
+#: src/grep.c:1532
+#, c-format
+msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
+msgstr ""
+"MODELLO è, in modo predefinito, un'espressione regolare di base (BRE).\n"
+
+#: src/grep.c:1533
 #, c-format
 msgid ""
 "Example: %s -i 'hello world' menu.h main.c\n"
@@ -536,7 +523,7 @@ msgstr ""
 "\n"
 "Selezione e interpretazione delle regexp:\n"
 
-#: src/main.c:1490
+#: src/grep.c:1537
 #, c-format
 msgid ""
 "  -E, --extended-regexp     PATTERN is an extended regular expression (ERE)\n"
@@ -551,7 +538,7 @@ msgstr ""
 "  -G, --basic-regexp        MODELLO è un'espressione regolare semplice\n"
 "  -P, --perl-regexp         MODELLO è un'espressione regolare Perl\n"
 
-#: src/main.c:1496
+#: src/grep.c:1543
 #, c-format
 msgid ""
 "  -e, --regexp=PATTERN      use PATTERN for matching\n"
@@ -572,16 +559,15 @@ msgstr ""
 "che\n"
 "                            newline\n"
 
-#: src/main.c:1503
+#: src/grep.c:1550
 #, c-format
 msgid ""
 "\n"
 "Miscellaneous:\n"
 "  -s, --no-messages         suppress error messages\n"
 "  -v, --invert-match        select non-matching lines\n"
-"  -V, --version             print version information and exit\n"
-"      --help                display this help and exit\n"
-"      --mmap                deprecated no-op; evokes a warning\n"
+"  -V, --version             display version information and exit\n"
+"      --help                display this help text and exit\n"
 msgstr ""
 "\n"
 "Varie:\n"
@@ -589,9 +575,8 @@ msgstr ""
 "  -v, --invert-match        Seleziona le righe che non corrispondono\n"
 "  -V, --version             Stampa la versione ed esce\n"
 "      --help                Visualizza questo aiuto ed esce\n"
-"      --mmap                Deprecata, stampa un avviso\n"
 
-#: src/main.c:1511
+#: src/grep.c:1557
 #, c-format
 msgid ""
 "\n"
@@ -617,13 +602,13 @@ msgstr ""
 "      --label=ETICH         Usa ETICH come nome del file per lo standard "
 "input\n"
 
-#: src/main.c:1522
+#: src/grep.c:1568
 #, c-format
 msgid ""
 "  -o, --only-matching       show only the part of a line matching PATTERN\n"
 "  -q, --quiet, --silent     suppress all normal output\n"
 "      --binary-files=TYPE   assume that binary files are TYPE;\n"
-"                            TYPE is `binary', `text', or `without-match'\n"
+"                            TYPE is 'binary', 'text', or 'without-match'\n"
 "  -a, --text                equivalent to --binary-files=text\n"
 msgstr ""
 "  -o, --only-matching       Mostra solo la parte della riga corrispondente "
@@ -635,14 +620,14 @@ msgstr ""
 "                            \\\"text\\\" oppure \\\"without-match\\\"\n"
 "  -a, --text                Equivale a --binary-files=text\n"
 
-#: src/main.c:1529
+#: src/grep.c:1575
 #, c-format
 msgid ""
 "  -I                        equivalent to --binary-files=without-match\n"
 "  -d, --directories=ACTION  how to handle directories;\n"
-"                            ACTION is `read', `recurse', or `skip'\n"
+"                            ACTION is 'read', 'recurse', or 'skip'\n"
 "  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;\n"
-"                            ACTION is `read' or `skip'\n"
+"                            ACTION is 'read' or 'skip'\n"
 "  -r, --recursive           like --directories=recurse\n"
 "  -R, --dereference-recursive  likewise, but follow all symlinks\n"
 msgstr ""
@@ -657,7 +642,7 @@ msgstr ""
 "                            Simile al precedente, ma segue i collegamenti\n"
 "                            simbolici\n"
 
-#: src/main.c:1538
+#: src/grep.c:1584
 #, c-format
 msgid ""
 "      --include=FILE_PATTERN  search only files that match FILE_PATTERN\n"
@@ -672,7 +657,7 @@ msgstr ""
 "      --exclude-from=FILE   Salta i file corrispondenti ai modelli nel FILE\n"
 "      --exclude-dir=MODELLO Salta le directory corrispondenti al MODELLO\n"
 
-#: src/main.c:1544
+#: src/grep.c:1590
 #, c-format
 msgid ""
 "  -L, --files-without-match  print only names of FILEs containing no match\n"
@@ -691,7 +676,7 @@ msgstr ""
 "  -T, --initial-tab         Allinea le tabulazioni (se necessario)\n"
 "  -Z, --null                Stampa il byte 0 dopo ogni nome di FILE\n"
 
-#: src/main.c:1550
+#: src/grep.c:1596
 #, c-format
 msgid ""
 "\n"
@@ -706,13 +691,13 @@ msgstr ""
 "  -A, --after-context=NUM   Stampa NUM righe di contesto seguente\n"
 "  -C, --context=NUM         Stampa NUM righe di contesto dell'output\n"
 
-#: src/main.c:1557
+#: src/grep.c:1603
 #, c-format
 msgid ""
 "  -NUM                      same as --context=NUM\n"
 "      --color[=WHEN],\n"
 "      --colour[=WHEN]       use markers to highlight the matching strings;\n"
-"                            WHEN is `always', `never', or `auto'\n"
+"                            WHEN is 'always', 'never', or 'auto'\n"
 "  -U, --binary              do not strip CR characters at EOL (MSDOS/"
 "Windows)\n"
 "  -u, --unix-byte-offsets   report offsets as if CRs were not there\n"
@@ -720,18 +705,27 @@ msgid ""
 "\n"
 msgstr ""
 "  -NUM                      Come --context=NUM\n"
-"      --color[=QUANDO]\n"
+"      --color[=QUANDO],\n"
 "      --colour[=QUANDO]     Usa i colori per distinguere le stringhe\n"
-"                            corrispondenti\n"
-"                            QUANDO può essere \"always\", \"never\" o \"auto"
-"\"\n"
+"                            corrispondenti; QUANDO può essere \"always\", "
+"\"never\"\n"
+"                            o \"auto\"\n"
 "  -U, --binary              Non rimuove i caratteri CR all'EOL (MSDOS/"
 "Windows)\n"
 "  -u, --unix-byte-offsets   Segnala gli offset come se non ci fossero CR\n"
 "                            (MSDOS/Windows)\n"
 "\n"
 
-#: src/main.c:1567
+#: src/grep.c:1612
+#, c-format
+msgid ""
+"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
+"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
+msgstr ""
+"\"egrep\" significa \"grep -E\", \"fgrep\" significa \"grep -F\".\n"
+"L'invocazione diretta come \"egrep\" o \"fgrep\" è deprecata.\n"
+
+#: src/grep.c:1615
 #, c-format
 msgid ""
 "When FILE is -, read standard input.  With no FILE, read . if a command-"
@@ -749,104 +743,98 @@ msgstr ""
 "stato\n"
 "è 2.\n"
 
-#: src/main.c:1573
+#: src/grep.c:1621
 #, c-format
 msgid "GNU Grep home page: <%s>\n"
 msgstr "Sito web di GNU grep: <%s>\n"
 
-#: src/main.c:1605
-#, c-format
-msgid "%s can only use the %s pattern syntax"
-msgstr "%s può usare solamente la sintassi di corrispondenza %s"
-
-#: src/main.c:1608
+#: src/grep.c:1687
 #, c-format
 msgid "conflicting matchers specified"
 msgstr "specificate corrispondenze in conflitto"
 
-#: src/main.c:1622
+#: src/grep.c:1698
 #, c-format
 msgid "invalid matcher %s"
 msgstr "corrispondenza %s non valida"
 
-#: src/main.c:1870
+#: src/grep.c:2006
 #, c-format
 msgid "unknown devices method"
 msgstr "metodo per i device sconosciuto"
 
-#: src/main.c:1999
+#: src/grep.c:2133
 #, c-format
 msgid "invalid max count"
 msgstr "numero massimo non valido"
 
-#: src/main.c:2056
+#: src/grep.c:2190
 #, c-format
 msgid "unknown binary-files type"
 msgstr "tipo di file binario sconosciuto"
 
-#: src/main.c:2119
-#, c-format
-msgid "the --mmap option has been a no-op since 2010"
-msgstr "l'opzione --mmap è una no-op dal 2010"
-
-#: src/pcresearch.c:42
+#: src/pcresearch.c:48
 msgid ""
 "support for the -P option is not compiled into this --disable-perl-regexp "
 "binary"
 msgstr ""
-"Il supporto all'opzione -P non è compilato in questo binario --disable-perl-"
+"il supporto all'opzione -P non è compilato in questo binario --disable-perl-"
 "regexp"
 
-#: src/pcresearch.c:56
+#: src/pcresearch.c:64
 #, c-format
 msgid "the -P option only supports a single pattern"
-msgstr "L'opzione -P supporta un solo modello"
+msgstr "l'opzione -P supporta un solo modello"
 
 #: src/pcresearch.c:110
+#, c-format
+msgid "internal error (should never happen)"
+msgstr "errore interno (non si dovrebbe mai verificare)"
+
+#: src/pcresearch.c:120
+#, c-format
+msgid "failed to allocate memory for the PCRE JIT stack"
+msgstr "impossibile allocare memoria per lo stack PCRE JIT"
+
+#: src/pcresearch.c:134
 #, c-format
 msgid "internal error"
 msgstr "errore interno"
 
-#: src/pcresearch.c:138
+#: src/pcresearch.c:162
 #, c-format
 msgid "exceeded PCRE's line length limit"
-msgstr "Limite di lunghezza riga PCRE raggiunto"
+msgstr "limite di lunghezza riga PCRE raggiunto"
 
-#: src/pcresearch.c:157
+#: src/pcresearch.c:181
 #, c-format
 msgid "exceeded PCRE's backtracking limit"
-msgstr "Limite di backtrack PCRE raggiunto"
+msgstr "limite di backtrack PCRE raggiunto"
 
-#~ msgid "unfinished repeat count"
-#~ msgstr "conteggio ripetizioni incompleto"
+#: src/pcresearch.c:185
+#, c-format
+msgid "invalid UTF-8 byte sequence in input"
+msgstr "sequenza byte UTF-8 in ingresso non valida"
 
-#~ msgid "malformed repeat count"
-#~ msgstr "conteggio ripetizioni malformato"
+#: src/pcresearch.c:192
+#, c-format
+msgid "internal PCRE error: %d"
+msgstr "errore interno PCRE: %d"
 
-#~ msgid "writing output"
-#~ msgstr "scrittura dell'output"
+#~ msgid "PATTERN is an extended regular expression (ERE).\n"
+#~ msgstr "MODELLO è un'espressione regolare estesa (ERE).\n"
 
-#~ msgid ""
-#~ "in GREP_COLORS=\"%s\", the \"%s\" capacity needs a value (\"=...\"); "
-#~ "skipped"
-#~ msgstr ""
-#~ "In GREP_COLORS=\"%s\", la capacità \"%s\" necessita di un valore (\"=..."
-#~ "\"); saltato"
+#~ msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
+#~ msgstr "L'invocazione come \"egrep\" è deprecata, usare \"grep -E\".\n"
 
-#~ msgid ""
-#~ "in GREP_COLORS=\"%s\", the \"%s\" capacity is boolean and cannot take a "
-#~ "value (\"=%s\"); skipped"
-#~ msgstr ""
-#~ "In GREP_COLORS=\"%s\", la capacità \"%s\" è booleana e non può accettare "
-#~ "un valore (\"=%s\"); saltato"
+#~ msgid "PATTERN is a set of newline-separated fixed strings.\n"
+#~ msgstr "MODELLO è un insieme di stringhe letterali separate da newline.\n"
 
-# (ndt) ???
-#~ msgid "in GREP_COLORS=\"%s\", the \"%s\" capacity %s"
-#~ msgstr "In GREP_COLORS=\"%s\", la capacità \"%s\" %s"
+#~ msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
+#~ msgstr "L'invocazione come \"fgrep\" è deprecata, usare \"grep -F\".\n"
 
-#~ msgid ""
-#~ "stopped processing of ill-formed GREP_COLORS=\"%s\" at remaining "
-#~ "substring \"%s\""
-#~ msgstr ""
-#~ "Elaborazione dei GREP_COLORS=\"%s\" mal formati nelle sotto stringhe \"%s"
-#~ "\" rimanenti fermata"
+#~ msgid "%s can only use the %s pattern syntax"
+#~ msgstr "%s può usare solamente la sintassi di corrispondenza %s"
+
+#~ msgid "the --mmap option has been a no-op since 2010"
+#~ msgstr "l'opzione --mmap è una no-op dal 2010"

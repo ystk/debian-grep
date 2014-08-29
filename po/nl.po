@@ -1,23 +1,20 @@
 # Dutch translations for GNU grep.
-# Copyright (C) 2012 Free Software Foundation, Inc.
+# Copyright (C) 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the grep package.
 #
-# A few times I was tempted
-# to take the hatchet,
-# snap it into the table,
-# and dictate my rules.
+# "To je zaista najmanje fer igra od svih koje postoje na svijetu."
 #
-# Erick Branderhorst <branderh@debian.org>, 1996.
-# Ivo Timmermans <itimmermans@bigfoot.com>, 2000.
-# Taco Witte <tcwitte@cs.uu.nl>, 2004.
+# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2007, 2008, 2010, 2011, 2012, 2013, 2014.
 # Erwin Poeze <erwin.poeze@gmail.com>, 2009.
-# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2007, 2008, 2010, 2011, 2012.
+# Taco Witte <tcwitte@cs.uu.nl>, 2004.
+# Ivo Timmermans <itimmermans@bigfoot.com>, 2000.
+# Erick Branderhorst <branderh@debian.org>, 1996.
 msgid ""
 msgstr ""
-"Project-Id-Version: grep-2.11.11-pre1\n"
+"Project-Id-Version: grep-2.19.12\n"
 "Report-Msgid-Bugs-To: bug-grep@gnu.org\n"
-"POT-Creation-Date: 2012-04-23 16:08+0200\n"
-"PO-Revision-Date: 2012-04-15 17:52+0200\n"
+"POT-Creation-Date: 2014-06-03 06:49-0700\n"
+"PO-Revision-Date: 2014-05-30 22:25+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -41,7 +38,7 @@ msgstr "argument %s van %s is niet eenduidig"
 msgid "Valid arguments are:"
 msgstr "Geldige argumenten zijn:"
 
-#: lib/closeout.c:112 src/main.c:894
+#: lib/closeout.c:112 src/grep.c:949
 #, c-format
 msgid "write error"
 msgstr "schrijffout"
@@ -105,8 +102,8 @@ msgstr "%s: optie '-W %s' staat geen argument toe\n"
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: optie '-W %s' vereist een argument\n"
 
-#: lib/obstack.c:413 lib/obstack.c:415 lib/xalloc-die.c:34 src/kwset.c:178
-#: src/kwset.c:186 src/kwset.c:409 src/pcresearch.c:153
+#: lib/obstack.c:416 lib/obstack.c:418 lib/xalloc-die.c:34
+#: src/pcresearch.c:177
 #, c-format
 msgid "memory exhausted"
 msgstr "onvoldoende geheugen beschikbaar"
@@ -150,76 +147,76 @@ msgstr "‘"
 msgid "'"
 msgstr "’"
 
-#: lib/regcomp.c:130
+#: lib/regcomp.c:131
 msgid "Success"
 msgstr "Gelukt"
 
-#: lib/regcomp.c:133
+#: lib/regcomp.c:134
 msgid "No match"
 msgstr "Geen overeenkomsten"
 
-#: lib/regcomp.c:136
+#: lib/regcomp.c:137
 msgid "Invalid regular expression"
 msgstr "Ongeldige reguliere expressie"
 
 # Zie http://mailman.vrijschrift.org/pipermail/vertaling/2005-August/004670.html
-#: lib/regcomp.c:139
+#: lib/regcomp.c:140
 msgid "Invalid collation character"
 msgstr "Ongeldig samengesteld teken"
 
-#: lib/regcomp.c:142
+#: lib/regcomp.c:143
 msgid "Invalid character class name"
 msgstr "Ongeldige tekenklassenaam"
 
-#: lib/regcomp.c:145
+#: lib/regcomp.c:146
 msgid "Trailing backslash"
 msgstr "Backslash aan het eind"
 
-#: lib/regcomp.c:148
+#: lib/regcomp.c:149
 msgid "Invalid back reference"
 msgstr "Ongeldige terugverwijzing"
 
-#: lib/regcomp.c:151
+#: lib/regcomp.c:152
 msgid "Unmatched [ or [^"
 msgstr "Ongepaarde [ of [^"
 
-#: lib/regcomp.c:154
+#: lib/regcomp.c:155
 msgid "Unmatched ( or \\("
 msgstr "Ongepaarde ( of \\("
 
-#: lib/regcomp.c:157
+#: lib/regcomp.c:158
 msgid "Unmatched \\{"
 msgstr "Ongepaarde \\{"
 
-#: lib/regcomp.c:160 src/dfa.c:1373
+#: lib/regcomp.c:161
 msgid "Invalid content of \\{\\}"
 msgstr "Ongeldige inhoud van \\{\\}"
 
-#: lib/regcomp.c:163
+#: lib/regcomp.c:164
 msgid "Invalid range end"
 msgstr "Ongeldig bereikeinde"
 
-#: lib/regcomp.c:166
+#: lib/regcomp.c:167
 msgid "Memory exhausted"
 msgstr "Onvoldoende geheugen beschikbaar"
 
-#: lib/regcomp.c:169
+#: lib/regcomp.c:170
 msgid "Invalid preceding regular expression"
 msgstr "Ongeldige voorafgaande reguliere expressie"
 
-#: lib/regcomp.c:172
+#: lib/regcomp.c:173
 msgid "Premature end of regular expression"
 msgstr "Voortijdig einde van reguliere expressie"
 
-#: lib/regcomp.c:175 src/dfa.c:1376
+#: lib/regcomp.c:176
 msgid "Regular expression too big"
 msgstr "Reguliere expressie is te groot"
 
-#: lib/regcomp.c:178
+#: lib/regcomp.c:179
 msgid "Unmatched ) or \\)"
 msgstr "Ongepaarde ) of \\)"
 
-#: lib/regcomp.c:703
+#: lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Geen eerdere reguliere expressie"
 
@@ -369,7 +366,7 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: lib/version-etc.c:245 src/main.c:1572
+#: lib/version-etc.c:245 src/grep.c:1620
 #, c-format
 msgid ""
 "\n"
@@ -396,7 +393,7 @@ msgstr "Webpagina van %s: <%s>\n"
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
 msgstr "Webpagina van %s: <http://www.gnu.org/software/%s/>\n"
 
-#: lib/version-etc.c:256 src/main.c:1575
+#: lib/version-etc.c:256 src/grep.c:1623
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
 "Algemene hulp bij gebruik van GNU-software: <http://www.gnu.org/gethelp/>\n"
@@ -416,128 +413,110 @@ msgstr "ongeldig achtervoegsel in argument '%3$s' van %1$s%2$s"
 msgid "%s%s argument '%s' too large"
 msgstr "argument '%3$s' van %1$s%2$s is te groot"
 
-#: src/dfa.c:953 src/dfa.c:956 src/dfa.c:976 src/dfa.c:986 src/dfa.c:998
-#: src/dfa.c:1049 src/dfa.c:1058 src/dfa.c:1061 src/dfa.c:1066 src/dfa.c:1079
-#: src/dfa.c:1137
+#: src/dfa.c:1017 src/dfa.c:1020 src/dfa.c:1039 src/dfa.c:1049 src/dfa.c:1061
+#: src/dfa.c:1097 src/dfa.c:1106 src/dfa.c:1109 src/dfa.c:1114 src/dfa.c:1128
+#: src/dfa.c:1174
 msgid "unbalanced ["
 msgstr "ongepaarde ["
 
-#: src/dfa.c:1007
+#: src/dfa.c:1073
 msgid "invalid character class"
 msgstr "ongeldige tekenklasse"
 
-#: src/dfa.c:1174
+#: src/dfa.c:1217
 msgid "character class syntax is [[:space:]], not [:space:]"
 msgstr "syntax van tekenklasse is [[:space:]], niet [:space:]"
 
-#: src/dfa.c:1226
+#: src/dfa.c:1265
 msgid "unfinished \\ escape"
 msgstr "onafgemaakte \\-stuurcode"
 
-#: src/dfa.c:1761
+#: src/dfa.c:1412
+msgid "invalid content of \\{\\}"
+msgstr "ongeldige inhoud van \\{\\}"
+
+#: src/dfa.c:1415
+msgid "regular expression too big"
+msgstr "reguliere expressie is te groot"
+
+#: src/dfa.c:1845
 msgid "unbalanced ("
 msgstr "ongepaarde ("
 
-#: src/dfa.c:1891
+#: src/dfa.c:1971
 msgid "no syntax specified"
 msgstr "geen syntax opgegeven"
 
-#: src/dfa.c:1899
+#: src/dfa.c:1979
 msgid "unbalanced )"
 msgstr "ongepaarde )"
 
-#: src/egrep.c:16
-msgid "PATTERN is an extended regular expression (ERE).\n"
-msgstr "PATROON is een uitgebreide reguliere expressie (ERE).\n"
-
-#: src/egrep.c:18
-msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
-msgstr ""
-"Gebruik van 'egrep' wordt ontraden; het is beter 'grep -E' te gebruiken.\n"
-
-#: src/fgrep.c:10
-msgid "PATTERN is a set of newline-separated fixed strings.\n"
-msgstr "PATROON is een serie tekenreeksen, elk op een aparte regel.\n"
-
-#: src/fgrep.c:12
-msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
-msgstr ""
-"Gebruik van 'fgrep' wordt ontraden; het is beter 'grep -F' te gebruiken.\n"
-
-#: src/grep.c:32
-msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
-msgstr "PATROON is standaard een gewone reguliere expressie (BRE).\n"
-
-#: src/grep.c:34
-msgid ""
-"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
-"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
-msgstr ""
-"Het gebruik van 'egrep' en 'fgrep' wordt ontraden;\n"
-"'egrep' betekent 'grep -E'; 'fgrep' betekent 'grep -F'.\n"
-"\n"
-
 #. This is a proper name. See the gettext manual, section Names.
-#: src/main.c:58
+#: src/grep.c:57
 msgid "Mike Haertel"
 msgstr "Mike Haertel"
 
-#: src/main.c:59
+#: src/grep.c:58
 msgid "others, see <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 msgstr "anderen, zie <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>"
 
-#: src/main.c:448
+#: src/grep.c:502
 msgid "invalid context length argument"
 msgstr "ongeldig argument voor contextlengte"
 
-#: src/main.c:503
+#: src/grep.c:571
 msgid "lseek failed"
 msgstr "'lseek' is mislukt"
 
-#: src/main.c:650
+#: src/grep.c:704
 #, c-format
 msgid "input is too large to count"
 msgstr "invoer is te groot om te kunnen tellen"
 
-#: src/main.c:1205
+#: src/grep.c:1257
 #, c-format
 msgid "Binary file %s matches\n"
 msgstr "Binair bestand %s bevat de gezochte tekst.\n"
 
-#: src/main.c:1256
+#: src/grep.c:1300
 #, c-format
 msgid "warning: %s: %s"
 msgstr "waarschuwing: %s: %s"
 
-#: src/main.c:1257
+#: src/grep.c:1301
 msgid "recursive directory loop"
 msgstr "oneindige lus in de mappen"
 
-#: src/main.c:1400
+#: src/grep.c:1449
 #, c-format
 msgid "input file %s is also the output"
 msgstr "invoerbestand %s is gelijk aan het uitvoerbestand"
 
-#: src/main.c:1458
+#: src/grep.c:1507
 msgid "(standard input)"
 msgstr "(standaardinvoer)"
 
-#: src/main.c:1474 src/main.c:1481
+#: src/grep.c:1523 src/grep.c:1530
 #, c-format
 msgid "Usage: %s [OPTION]... PATTERN [FILE]...\n"
 msgstr "Gebruik:  %s [OPTIE]... PATROON [BESTAND]...\n"
 
-#: src/main.c:1476
+#: src/grep.c:1525
 #, c-format
 msgid "Try '%s --help' for more information.\n"
 msgstr "Typ '%s --help' voor meer informatie.\n"
 
-#: src/main.c:1482
+#: src/grep.c:1531
 #, c-format
 msgid "Search for PATTERN in each FILE or standard input.\n"
-msgstr "Naar PATROON zoeken in ieder gegeven BESTAND, of in standaardinvoer.\n"
+msgstr "Zoekt naar PATROON in ieder gegeven BESTAND, of in standaardinvoer.\n"
 
-#: src/main.c:1485
+#: src/grep.c:1532
+#, c-format
+msgid "PATTERN is, by default, a basic regular expression (BRE).\n"
+msgstr "PATROON is standaard een gewone reguliere expressie (BRE).\n"
+
+#: src/grep.c:1533
 #, c-format
 msgid ""
 "Example: %s -i 'hello world' menu.h main.c\n"
@@ -548,7 +527,7 @@ msgstr ""
 "\n"
 "Selectie en interpretatie van reguliere expressies:\n"
 
-#: src/main.c:1490
+#: src/grep.c:1537
 #, c-format
 msgid ""
 "  -E, --extended-regexp     PATTERN is an extended regular expression (ERE)\n"
@@ -563,7 +542,7 @@ msgstr ""
 "  -G, --basic-regexp        PATROON is een gewone reguliere expressie\n"
 "  -P, --perl-regexp         PATROON is een reguliere Perl-expressie\n"
 
-#: src/main.c:1496
+#: src/grep.c:1543
 #, c-format
 msgid ""
 "  -e, --regexp=PATTERN      use PATTERN for matching\n"
@@ -583,16 +562,15 @@ msgstr ""
 "regel\n"
 "  -z, --null-data           regels eindigen op 0-byte, niet op LF-teken\n"
 
-#: src/main.c:1503
+#: src/grep.c:1550
 #, c-format
 msgid ""
 "\n"
 "Miscellaneous:\n"
 "  -s, --no-messages         suppress error messages\n"
 "  -v, --invert-match        select non-matching lines\n"
-"  -V, --version             print version information and exit\n"
-"      --help                display this help and exit\n"
-"      --mmap                deprecated no-op; evokes a warning\n"
+"  -V, --version             display version information and exit\n"
+"      --help                display this help text and exit\n"
 msgstr ""
 "\n"
 "Diversen:\n"
@@ -600,9 +578,8 @@ msgstr ""
 "  -v, --invert-match        de niet-overeenkomende regels selecteren\n"
 "  -V, --version             programmaversie tonen en stoppen\n"
 "      --help                deze hulptekst tonen en stoppen\n"
-"      --mmap                (doet niets, behalve hiervoor waarschuwen)\n"
 
-#: src/main.c:1511
+#: src/grep.c:1557
 #, c-format
 msgid ""
 "\n"
@@ -627,13 +604,13 @@ msgstr ""
 "      --label=LABEL         dit LABEL als naam voor standaardinvoer "
 "gebruiken\n"
 
-#: src/main.c:1522
+#: src/grep.c:1568
 #, c-format
 msgid ""
 "  -o, --only-matching       show only the part of a line matching PATTERN\n"
 "  -q, --quiet, --silent     suppress all normal output\n"
 "      --binary-files=TYPE   assume that binary files are TYPE;\n"
-"                            TYPE is `binary', `text', or `without-match'\n"
+"                            TYPE is 'binary', 'text', or 'without-match'\n"
 "  -a, --text                equivalent to --binary-files=text\n"
 msgstr ""
 "  -o, --only-matching       alleen het overeenkomende regelfragment tonen\n"
@@ -646,14 +623,14 @@ msgstr ""
 "overeenkomsten)\n"
 "  -a, --text                hetzelfde als '--binary-files=text'\n"
 
-#: src/main.c:1529
+#: src/grep.c:1575
 #, c-format
 msgid ""
 "  -I                        equivalent to --binary-files=without-match\n"
 "  -d, --directories=ACTION  how to handle directories;\n"
-"                            ACTION is `read', `recurse', or `skip'\n"
+"                            ACTION is 'read', 'recurse', or 'skip'\n"
 "  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;\n"
-"                            ACTION is `read' or `skip'\n"
+"                            ACTION is 'read' or 'skip'\n"
 "  -r, --recursive           like --directories=recurse\n"
 "  -R, --dereference-recursive  likewise, but follow all symlinks\n"
 msgstr ""
@@ -670,7 +647,7 @@ msgstr ""
 "  -R, --dereference-recursive   idem, maar alle symbolische koppelingen "
 "volgen\n"
 
-#: src/main.c:1538
+#: src/grep.c:1584
 #, c-format
 msgid ""
 "      --include=FILE_PATTERN  search only files that match FILE_PATTERN\n"
@@ -689,7 +666,7 @@ msgstr ""
 "                                   BESTAND voldoen\n"
 "      --exclude-dir=PATROON      mappen overslaan die aan PATROON voldoen\n"
 
-#: src/main.c:1544
+#: src/grep.c:1590
 #, c-format
 msgid ""
 "  -L, --files-without-match  print only names of FILEs containing no match\n"
@@ -706,7 +683,7 @@ msgstr ""
 "invoegen)\n"
 "  -Z, --null                een 0-byte invoegen na iedere bestandsnaam\n"
 
-#: src/main.c:1550
+#: src/grep.c:1596
 #, c-format
 msgid ""
 "\n"
@@ -722,13 +699,13 @@ msgstr ""
 "  -A, --after-context=AANTAL    dit AANTAL regels nakomende context tonen\n"
 "  -C, --context=AANTAL          dit AANTAL regels context tonen\n"
 
-#: src/main.c:1557
+#: src/grep.c:1603
 #, c-format
 msgid ""
 "  -NUM                      same as --context=NUM\n"
 "      --color[=WHEN],\n"
 "      --colour[=WHEN]       use markers to highlight the matching strings;\n"
-"                            WHEN is `always', `never', or `auto'\n"
+"                            WHEN is 'always', 'never', or 'auto'\n"
 "  -U, --binary              do not strip CR characters at EOL (MSDOS/"
 "Windows)\n"
 "  -u, --unix-byte-offsets   report offsets as if CRs were not there\n"
@@ -747,7 +724,17 @@ msgstr ""
 "Windows)\n"
 "\n"
 
-#: src/main.c:1567
+#: src/grep.c:1612
+#, c-format
+msgid ""
+"'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.\n"
+"Direct invocation as either 'egrep' or 'fgrep' is deprecated.\n"
+msgstr ""
+"Het gebruik van 'egrep' en 'fgrep' wordt ontraden;\n"
+"'egrep' betekent 'grep -E'; 'fgrep' betekent 'grep -F'.\n"
+"\n"
+
+#: src/grep.c:1615
 #, c-format
 msgid ""
 "When FILE is -, read standard input.  With no FILE, read . if a command-"
@@ -763,72 +750,102 @@ msgstr ""
 "De afsluitwaarde is 0 in geval van overeenkomsten, anders 1; als er\n"
 "een fout optreedt en '-q' is niet gegeven, dan is de afsluitwaarde 2.\n"
 
-#: src/main.c:1573
+#: src/grep.c:1621
 #, c-format
 msgid "GNU Grep home page: <%s>\n"
 msgstr "Webpagina van GNU grep: <%s>\n"
 
-#: src/main.c:1605
-#, c-format
-msgid "%s can only use the %s pattern syntax"
-msgstr "%s kan alleen de patroonsyntax %s gebruiken"
-
-#: src/main.c:1608
+#: src/grep.c:1687
 #, c-format
 msgid "conflicting matchers specified"
 msgstr "conflicterende expressiesoorten"
 
-#: src/main.c:1622
+#: src/grep.c:1698
 #, c-format
 msgid "invalid matcher %s"
 msgstr "ongeldige expressiesoort '%s'"
 
-#: src/main.c:1870
+#: src/grep.c:2006
 #, c-format
 msgid "unknown devices method"
 msgstr "onbekende apparaten-actie"
 
-#: src/main.c:1999
+#: src/grep.c:2133
 #, c-format
 msgid "invalid max count"
 msgstr "ongeldig maximum aantal"
 
-#: src/main.c:2056
+#: src/grep.c:2190
 #, c-format
 msgid "unknown binary-files type"
 msgstr "onbekend binair bestandstype"
 
-#: src/main.c:2119
-#, c-format
-msgid "the --mmap option has been a no-op since 2010"
-msgstr "de optie '--mmap' doet niets meer sinds 2010"
-
-#: src/pcresearch.c:42
+#: src/pcresearch.c:48
 msgid ""
 "support for the -P option is not compiled into this --disable-perl-regexp "
 "binary"
 msgstr ""
 "ondersteuning voor de optie '-P' is in deze programmaversie niet opgenomen"
 
-#: src/pcresearch.c:56
+#: src/pcresearch.c:64
 #, c-format
 msgid "the -P option only supports a single pattern"
 msgstr "optie '-P' accepteert slechts één patroon"
 
 #: src/pcresearch.c:110
 #, c-format
-msgid "internal error"
-msgstr "interne programmafout"
+msgid "internal error (should never happen)"
+msgstr "**interne programmafout** (zou nooit mogen gebeuren)"
 
-#: src/pcresearch.c:138
+#: src/pcresearch.c:120
+#, c-format
+msgid "failed to allocate memory for the PCRE JIT stack"
+msgstr "onvoldoende geheugen beschikbaar voor de PCRE-JIT-stack"
+
+#: src/pcresearch.c:134
+#, c-format
+msgid "internal error"
+msgstr "**interne programmafout**"
+
+#: src/pcresearch.c:162
 #, c-format
 msgid "exceeded PCRE's line length limit"
 msgstr "regellengtegrens van PCRE is overschreden"
 
-#: src/pcresearch.c:157
+#: src/pcresearch.c:181
 #, c-format
 msgid "exceeded PCRE's backtracking limit"
 msgstr "terugverwijzingsgrens van PCRE is overschreden"
+
+#: src/pcresearch.c:185
+#, c-format
+msgid "invalid UTF-8 byte sequence in input"
+msgstr "ongeldige UTF-8-bytereeks in invoer"
+
+#: src/pcresearch.c:192
+#, c-format
+msgid "internal PCRE error: %d"
+msgstr "**interne programmafout** in PCRE: %d"
+
+#~ msgid "PATTERN is an extended regular expression (ERE).\n"
+#~ msgstr "PATROON is een uitgebreide reguliere expressie (ERE).\n"
+
+#~ msgid "Invocation as 'egrep' is deprecated; use 'grep -E' instead.\n"
+#~ msgstr ""
+#~ "Gebruik van 'egrep' wordt ontraden; het is beter 'grep -E' te gebruiken.\n"
+
+#~ msgid "PATTERN is a set of newline-separated fixed strings.\n"
+#~ msgstr "PATROON is een serie tekenreeksen, elk op een aparte regel.\n"
+
+#~ msgid "Invocation as 'fgrep' is deprecated; use 'grep -F' instead.\n"
+#~ msgstr ""
+#~ "Gebruik van 'fgrep' wordt ontraden; het is beter 'grep -F' te gebruiken.\n"
+
+#~ msgid "%s can only use the %s pattern syntax"
+#~ msgstr "%s kan alleen de patroonsyntax %s gebruiken"
+
+#~ msgid "the --mmap option has been a no-op since 2010"
+#~ msgstr "de optie '--mmap' doet niets meer sinds 2010"
 
 #~ msgid "unfinished repeat count"
 #~ msgstr "onafgemaakt herhalingsaantal"
