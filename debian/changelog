@@ -1,3 +1,26 @@
+grep (2.20-4.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix CVE-2015-1345: buffer overrun in src/kwset.c (closes: #776039).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 26 Jan 2015 02:56:14 +0000
+
+grep (2.20-4) unstable; urgency=medium
+
+  * d/patches/05-grep-wrapper-sh.patch: egrep and fgrep wrap scripts use sh
+    instead of bash. The patch also removes the possible call ./grep (looking
+    for it in the working directory) (Closes: #762427, #762917).
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Fri, 03 Oct 2014 12:09:05 +0200
+
+grep (2.20-3) unstable; urgency=high
+
+  * d/patches/0001-grep-P-invalid-utf8-non-matching-debian.patch From
+    upstream: -P now treats invalid UTF-8 characters as non matching.
+    Thanks to Paul Eggert. (Closes: #758105). 
+
+ -- Santiago Ruano Rincón <santiago@debian.org>  Wed, 10 Sep 2014 13:10:32 +0200
+
 grep (2.20-2) unstable; urgency=low
 
   * Add 85-412370-F-x-documentation.patch to d/patches/series
